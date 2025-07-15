@@ -1,0 +1,179 @@
+
+import { useState } from "react";
+import { Github, ExternalLink, Filter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export const Projects = () => {
+  const [filter, setFilter] = useState("all");
+
+  const projects = [
+    {
+      title: "YouTube Video Summarizer Pro",
+      description: "AI tool that summarizes YouTube videos into key insights using proxy rotation and YouTube Data API fallback, achieving 98% success rate across 1,000+ test videos.",
+      tech: ["Python", "Gemini AI", "Streamlit", "YouTube API"],
+      category: "ai",
+      github: "https://github.com/JaswanthG",
+      demo: "#",
+      features: ["Proxy rotation system", "Custom prompt engineering", "Intuitive Streamlit interface", "Intelligent caching"]
+    },
+    {
+      title: "Pencil Sketch Generator",
+      description: "Transforming photos into artistic pencil sketches with AI. Developed OpenCV tool with adjustable artistic effects and efficient image processing.",
+      tech: ["Python", "OpenCV", "NumPy"],
+      category: "ai",
+      github: "https://github.com/JaswanthG",
+      demo: "#",
+      features: ["Blur inversion", "Edge detection", "URL image fetching", "Error handling"]
+    },
+    {
+      title: "Todo List - JavaScript CRUD",
+      description: "Interactive task management web application with persistent storage. Features include task counter, clear all functionality, and responsive design.",
+      tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+      category: "frontend",
+      github: "https://github.com/JaswanthG",
+      demo: "#",
+      features: ["CRUD operations", "Local storage", "Responsive design", "Modern CSS techniques"]
+    },
+    {
+      title: "Responsive Portfolio Website",
+      description: "Modern, responsive personal portfolio showcasing projects and skills. Built with clean design principles and optimal performance.",
+      tech: ["HTML5", "CSS3", "JavaScript", "Flexbox"],
+      category: "frontend",
+      github: "https://github.com/JaswanthG",
+      demo: "#",
+      features: ["Responsive design", "Modern UI/UX", "Cross-browser compatibility", "Performance optimized"]
+    },
+    {
+      title: "Restaurant Website",
+      description: "Full-featured restaurant website with menu display, reservation system, and modern responsive design.",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      category: "frontend",
+      github: "https://github.com/JaswanthG",
+      demo: "#",
+      features: ["Interactive menu", "Contact forms", "Mobile responsive", "Modern animations"]
+    },
+    {
+      title: "Task Management System",
+      description: "Comprehensive task management application with user authentication, project organization, and real-time updates.",
+      tech: ["Python", "Flask", "SQL", "HTML/CSS"],
+      category: "fullstack",
+      github: "https://github.com/JaswanthG",
+      demo: "#",
+      features: ["User authentication", "Database integration", "RESTful API", "Real-time updates"]
+    }
+  ];
+
+  const categories = [
+    { id: "all", name: "All Projects", count: projects.length },
+    { id: "ai", name: "AI & ML", count: projects.filter(p => p.category === "ai").length },
+    { id: "frontend", name: "Frontend", count: projects.filter(p => p.category === "frontend").length },
+    { id: "fullstack", name: "Full Stack", count: projects.filter(p => p.category === "fullstack").length },
+  ];
+
+  const filteredProjects = filter === "all" ? projects : projects.filter(p => p.category === filter);
+
+  return (
+    <section id="projects" className="py-20 bg-slate-800/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Featured <span className="text-cyan-400">Projects</span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            A showcase of my technical skills and problem-solving capabilities through real-world applications
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setFilter(category.id)}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
+                filter === category.id
+                  ? "bg-cyan-500 text-white shadow-lg transform scale-105"
+                  : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50 hover:text-cyan-400"
+              }`}
+            >
+              <Filter className="w-4 h-4" />
+              <span className="font-medium">{category.name}</span>
+              <span className="bg-slate-800/50 px-2 py-1 rounded-full text-xs">{category.count}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group"
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <div className="flex space-x-2">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                    >
+                      <Github size={20} />
+                    </a>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  </div>
+                </div>
+
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="mb-4">
+                  <h4 className="text-sm font-semibold text-cyan-400 mb-2">Key Features:</h4>
+                  <ul className="text-sm text-gray-300 space-y-1">
+                    {project.features.map((feature, i) => (
+                      <li key={i} className="flex items-center">
+                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button 
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
+            onClick={() => window.open("https://github.com/JaswanthG", "_blank")}
+          >
+            <Github className="mr-2" size={20} />
+            View All Projects on GitHub
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
