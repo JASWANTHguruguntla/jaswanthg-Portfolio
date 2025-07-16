@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Download, Mail, Github, Linkedin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,6 +31,16 @@ export const Hero = () => {
 
     return () => clearInterval(typeWriter);
   }, [currentIndex]);
+
+  const handleDownloadResume = () => {
+    // Create a temporary link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/resume.pdf'; // This assumes you have a resume.pdf file in the public folder
+    link.download = 'Jaswanth_Guruguntla_Resume.pdf'; // Name for the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -70,12 +79,15 @@ export const Hero = () => {
         </div>
 
         <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in">
-          B.Tech CSE (AI) Final Year Student | CGPA: 8.88 | ServiceNow CSA Certified | 
+          B.Tech CSE (AI) Final Year Student | CGPA: 8.71 | ServiceNow CSA Certified | 
           Passionate about building scalable solutions and exploring AI frontiers
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
-          <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+          <Button 
+            onClick={handleDownloadResume}
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+          >
             <Download className="mr-2" size={20} />
             Download Resume
           </Button>
