@@ -1,40 +1,31 @@
-
 import { GraduationCap, Code, Brain, Trophy } from "lucide-react";
-
 export const About = () => {
-  const timeline = [
-    {
-      year: "2022-2026",
-      title: "B.Tech CSE (AI)",
-      subtitle: "Annamacharya Institute of Technology and Sciences",
-      description: "CGPA: 8.88 • Specializing in Artificial Intelligence",
-      icon: <GraduationCap className="w-6 h-6" />,
-    },
-    {
-      year: "2023",
-      title: "CCBP 4.0 Intensive",
-      subtitle: "NxtWave - Full-Stack Development",
-      description: "Mastered modern web technologies and full-stack development",
-      icon: <Code className="w-6 h-6" />,
-    },
-    {
-      year: "2024",
-      title: "ServiceNow CSA Certified",
-      subtitle: "Smart Interz Partnership",
-      description: "Certified System Administrator with hands-on platform experience",
-      icon: <Trophy className="w-6 h-6" />,
-    },
-    {
-      year: "2025",
-      title: "AI Research Focus",
-      subtitle: "Machine Learning & Deep Learning",
-      description: "Exploring advanced AI applications and research opportunities",
-      icon: <Brain className="w-6 h-6" />,
-    },
-  ];
-
-  return (
-    <section id="about" className="py-20 bg-slate-800/50">
+  const timeline = [{
+    year: "2022-2026",
+    title: "B.Tech CSE (AI)",
+    subtitle: "Annamacharya Institute of Technology and Sciences",
+    description: "CGPA: 8.88 • Specializing in Artificial Intelligence",
+    icon: <GraduationCap className="w-6 h-6" />
+  }, {
+    year: "2023",
+    title: "CCBP 4.0 Intensive",
+    subtitle: "NxtWave - Full-Stack Development",
+    description: "Mastered modern web technologies and full-stack development",
+    icon: <Code className="w-6 h-6" />
+  }, {
+    year: "2024",
+    title: "ServiceNow CSA Certified",
+    subtitle: "Smart Interz Partnership",
+    description: "Certified System Administrator with hands-on platform experience",
+    icon: <Trophy className="w-6 h-6" />
+  }, {
+    year: "2025",
+    title: "AI Research Focus",
+    subtitle: "Machine Learning & Deep Learning",
+    description: "Exploring advanced AI applications and research opportunities",
+    icon: <Brain className="w-6 h-6" />
+  }];
+  return <section id="about" className="py-20 bg-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -67,7 +58,7 @@ export const About = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">
-                <div className="text-3xl font-bold text-cyan-400 mb-2">8.88</div>
+                <div className="text-3xl font-bold text-cyan-400 mb-2">8.81</div>
                 <div className="text-gray-300">CGPA</div>
               </div>
               <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">
@@ -80,8 +71,7 @@ export const About = () => {
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-purple-400"></div>
             <div className="space-y-8">
-              {timeline.map((item, index) => (
-                <div key={index} className="relative flex items-start">
+              {timeline.map((item, index) => <div key={index} className="relative flex items-start">
                   <div className="absolute left-6 w-4 h-4 bg-cyan-400 rounded-full border-4 border-slate-900"></div>
                   <div className="ml-16 bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-colors duration-300">
                     <div className="flex items-center mb-2">
@@ -94,12 +84,10 @@ export const About = () => {
                     <p className="text-gray-300 font-medium mb-2">{item.subtitle}</p>
                     <p className="text-gray-400 text-sm">{item.description}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
