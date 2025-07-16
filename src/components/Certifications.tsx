@@ -1,31 +1,14 @@
-
 import { Award, Calendar, ExternalLink } from "lucide-react";
 
 export const Certifications = () => {
   const certifications = [
     {
       title: "ServiceNow Certified System Administrator (CSA)",
-      issuer: "ServiceNow",
+      issuer: "ServiceNow", 
       date: "2024",
       description: "Comprehensive certification covering ServiceNow platform administration, user management, and system configuration.",
       skills: ["Platform Administration", "User Management", "System Configuration", "Workflow Management"],
       color: "from-blue-500 to-blue-600"
-    },
-    {
-      title: "Full Stack Development Certification",
-      issuer: "CCBP 4.0 - NxtWave",
-      date: "2023",
-      description: "Intensive full-stack development program covering modern web technologies and practical project implementation.",
-      skills: ["HTML5", "CSS3", "JavaScript", "Python", "SQL", "React"],
-      color: "from-green-500 to-green-600"
-    },
-    {
-      title: "Smart Interz - ServiceNow Course",
-      issuer: "Smart Interz",
-      date: "2024",
-      description: "Specialized training in ServiceNow platform development and implementation best practices.",
-      skills: ["ServiceNow Development", "ITSM", "Platform Configuration", "Best Practices"],
-      color: "from-purple-500 to-purple-600"
     },
     {
       title: "Computer Aided Design (CAD)",
@@ -114,7 +97,7 @@ export const Certifications = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">5+</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">3+</div>
               <div className="text-gray-300">Certifications</div>
             </div>
             <div className="text-center">
