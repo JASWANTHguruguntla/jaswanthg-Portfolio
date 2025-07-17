@@ -9,52 +9,50 @@ export const Skills = () => {
   const [competenciesRef, competenciesVisible] = useScrollAnimation();
 
   const skillCategories = {
-    programming: {
-      title: "Programming Languages",
+    frontend: {
+      title: "Frontend Development",
       icon: <Code className="w-6 h-6" />,
       color: "from-blue-500 to-blue-600",
       skills: [
-        "Java",
-        "Python", 
+        "HTML",
+        "CSS",
         "JavaScript",
-        "C"
+        "Flexbox",
+        "Media Queries"
       ]
     },
-    frameworks: {
-      title: "Frameworks & Libraries",
-      icon: <Wrench className="w-6 h-6" />,
+    backend: {
+      title: "Backend Development",
+      icon: <Database className="w-6 h-6" />,
       color: "from-green-500 to-green-600",
       skills: [
-        "Spring Boot",
-        "Spring MVC",
-        "Spring Security",
-        "Spring Data JPA",
-        "React.js",
-        "Node.js"
-      ]
-    },
-    database: {
-      title: "Databases",
-      icon: <Database className="w-6 h-6" />,
-      color: "from-purple-500 to-purple-600",
-      skills: [
-        "MySQL",
-        "PostgreSQL",
-        "MongoDB",
-        "JPA/Hibernate"
+        "Python",
+        "SQL",
+        "Flask",
+        "Streamlit"
       ]
     },
     tools: {
-      title: "Tools & Technologies",
+      title: "Development Tools",
+      icon: <Wrench className="w-6 h-6" />,
+      color: "from-purple-500 to-purple-600",
+      skills: [
+        "VS Code",
+        "Git & GitHub",
+        "Command Line",
+        "LaTeX",
+        "Lovable",
+        "Bolt"
+      ]
+    },
+    platforms: {
+      title: "Platforms & Certifications",
       icon: <Cloud className="w-6 h-6" />,
       color: "from-orange-500 to-orange-600",
       skills: [
-        "Git & GitHub",
-        "Postman",
-        "Maven",
-        "Docker",
-        "VS Code",
-        "IntelliJ IDEA"
+        "ServiceNow (CSA Certified)",
+        "Salesforce (Learning)",
+        "LeetCode (Problem Solving)"
       ]
     },
     additional: {
@@ -62,24 +60,24 @@ export const Skills = () => {
       icon: <Brain className="w-6 h-6" />,
       color: "from-cyan-500 to-cyan-600",
       skills: [
-        "RESTful API Development",
-        "Authentication & Authorization",
-        "Database Design",
+        "Web Development",
+        "Database Management",
         "Problem Solving",
-        "Software Development",
-        "Team Collaboration"
+        "Version Control",
+        "Responsive Design",
+        "API Development"
       ]
     }
   };
 
   const coreCompetencies = [
+    "Web Development",
     "Backend Development",
-    "API Design",
-    "Database Management",
-    "Authentication Systems",
-    "Code Quality",
+    "Database Management", 
     "Problem Solving",
-    "Team Collaboration",
+    "Version Control",
+    "Responsive Design",
+    "ServiceNow Platform",
     "Continuous Learning"
   ];
 
@@ -96,7 +94,7 @@ export const Skills = () => {
             Skills & <span className="text-cyan-400">Expertise</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive backend development skills with a focus on Java ecosystem and modern development practices
+            Full-stack development skills with expertise in Python, web technologies, and enterprise platforms
           </p>
         </div>
 
