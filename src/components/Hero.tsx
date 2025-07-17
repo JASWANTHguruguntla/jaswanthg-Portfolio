@@ -99,7 +99,7 @@ export const Hero = () => {
 
         <div className="flex justify-center space-x-6 mb-16 animate-fade-in">
           <a
-            href="https://github.com/JaswanthG"
+            href="https://github.com/JASWANTHguruguntla"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"

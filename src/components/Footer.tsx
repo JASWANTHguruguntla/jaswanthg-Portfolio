@@ -14,7 +14,7 @@ export const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/JaswanthG"
+                href="https://github.com/JASWANTHguruguntla"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"

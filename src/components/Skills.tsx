@@ -1,67 +1,67 @@
 
 import { useState } from "react";
-import { Code, Database, Wrench, Cloud, Brain } from "lucide-react";
+import { Code, Database, Wrench, Cloud, Brain, Shield } from "lucide-react";
 
 export const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("frontend");
+  const [activeCategory, setActiveCategory] = useState("programming");
 
   const skillCategories = {
-    frontend: {
-      title: "Frontend Development",
+    programming: {
+      title: "Programming & Frameworks",
       icon: <Code className="w-6 h-6" />,
+      color: "from-blue-500 to-blue-600",
       skills: [
-        { name: "HTML5", level: 95 },
-        { name: "CSS3", level: 90 },
-        { name: "JavaScript", level: 85 },
-        { name: "Flexbox", level: 90 },
-        { name: "Responsive Design", level: 88 },
-        { name: "Bootstrap", level: 80 },
-      ],
+        "Core Java (OOP, Streams, Multithreading)",
+        "Spring Boot (MVC, Security, Data JPA)",
+        "RESTful API Development",
+        "Exception Handling & Validation"
+      ]
     },
-    backend: {
-      title: "Backend Development",
+    database: {
+      title: "Database & Persistence",
       icon: <Database className="w-6 h-6" />,
+      color: "from-green-500 to-green-600",
       skills: [
-        { name: "Python", level: 90 },
-        { name: "SQL", level: 85 },
-        { name: "Flask", level: 80 },
-        { name: "Streamlit", level: 85 },
-        { name: "API Development", level: 75 },
-      ],
+        "MySQL Database Design",
+        "SQL Queries & Optimization",
+        "JPA/Hibernate ORM",
+        "Database Schema Management"
+      ]
     },
     tools: {
-      title: "Tools & Technologies",
+      title: "Tools & Testing",
       icon: <Wrench className="w-6 h-6" />,
+      color: "from-purple-500 to-purple-600",
       skills: [
-        { name: "Git & GitHub", level: 88 },
-        { name: "VS Code", level: 95 },
-        { name: "Command Line", level: 85 },
-        { name: "LaTeX", level: 80 },
-        { name: "Figma", level: 70 },
-      ],
+        "Postman API Testing",
+        "JUnit & Mockito Testing",
+        "Maven Build Tool",
+        "Lombok for Productivity"
+      ]
     },
-    platforms: {
-      title: "Platforms & Certifications",
-      icon: <Cloud className="w-6 h-6" />,
+    additional: {
+      title: "Additional Skills",
+      icon: <Shield className="w-6 h-6" />,
+      color: "from-orange-500 to-orange-600",
       skills: [
-        { name: "ServiceNow", level: 85 },
-        { name: "Salesforce", level: 60 },
-        { name: "LeetCode", level: 75 },
-        { name: "AWS Basics", level: 65 },
-      ],
-    },
-    ai: {
-      title: "AI & Machine Learning",
-      icon: <Brain className="w-6 h-6" />,
-      skills: [
-        { name: "OpenCV", level: 80 },
-        { name: "NumPy", level: 75 },
-        { name: "Pandas", level: 70 },
-        { name: "Machine Learning", level: 70 },
-        { name: "Computer Vision", level: 75 },
-      ],
-    },
+        "JWT-based Authentication",
+        "Email Integration & Verification",
+        "File Upload/Download Systems",
+        "Password Reset Functionality"
+      ]
+    }
   };
+
+  const coreCompetencies = [
+    "Backend Development",
+    "API Design",
+    "Database Management",
+    "Authentication Systems",
+    "Code Quality",
+    "Problem Solving",
+    "Team Collaboration",
+    "Continuous Learning"
+  ];
 
   return (
     <section id="skills" className="py-20 bg-slate-900/50">
@@ -71,62 +71,43 @@ export const Skills = () => {
             Skills & <span className="text-cyan-400">Expertise</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            A comprehensive toolkit built through continuous learning and hands-on project experience
+            Comprehensive backend development skills with a focus on Java ecosystem and modern development practices
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {Object.entries(skillCategories).map(([key, category]) => (
-            <button
+            <div
               key={key}
-              onClick={() => setActiveCategory(key)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
-                activeCategory === key
-                  ? "bg-cyan-500 text-white shadow-lg transform scale-105"
-                  : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50 hover:text-cyan-400"
-              }`}
+              className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105"
             >
-              {category.icon}
-              <span className="font-medium">{category.title}</span>
-            </button>
+              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} mb-4`}>
+                {category.icon}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
+              <ul className="space-y-2">
+                {category.skills.map((skill, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="text-gray-300 text-sm">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
 
         <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/20">
-          <h3 className="text-2xl font-bold text-white mb-8 text-center">
-            {skillCategories[activeCategory].title}
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories[activeCategory].skills.map((skill, index) => (
-              <div key={index} className="bg-slate-700/50 rounded-lg p-6 border border-cyan-400/10 hover:border-cyan-400/30 transition-all duration-300">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-white font-medium">{skill.name}</span>
-                  <span className="text-cyan-400 font-bold">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-slate-600 rounded-full h-2">
-                  <div
-                    className="bg-gradient-to-r from-cyan-400 to-purple-400 h-2 rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
-              </div>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Core Competencies</h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            {coreCompetencies.map((competency, index) => (
+              <span
+                key={index}
+                className="px-4 py-2 bg-slate-700/50 text-cyan-400 rounded-full border border-cyan-400/30 hover:bg-cyan-400/10 transition-colors duration-200"
+              >
+                {competency}
+              </span>
             ))}
-          </div>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">
-            <div className="text-3xl font-bold text-cyan-400 mb-2">Frontend</div>
-            <div className="text-gray-300">HTML, CSS, JavaScript</div>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">
-            <div className="text-3xl font-bold text-cyan-400 mb-2">Backend</div>
-            <div className="text-gray-300">Python, SQL, Flask</div>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">
-            <div className="text-3xl font-bold text-cyan-400 mb-2">AI/ML</div>
-            <div className="text-gray-300">OpenCV, NumPy, Computer Vision</div>
           </div>
         </div>
       </div>

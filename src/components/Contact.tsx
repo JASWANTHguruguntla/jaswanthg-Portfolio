@@ -90,7 +90,7 @@ export const Contact = () => {
               <h3 className="text-xl font-bold text-white mb-4">Social Links</h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/JaswanthG"
+                  href="https://github.com/JASWANTHguruguntla"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
