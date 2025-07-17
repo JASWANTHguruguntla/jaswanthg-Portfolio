@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Download, Mail, Github, Linkedin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Hero = () => {
+  const [heroRef, heroVisible] = useScrollAnimation();
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const titles = [
@@ -65,7 +67,12 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <div 
+        ref={heroRef}
+        className={`relative z-10 text-center max-w-4xl mx-auto px-4 transition-all duration-1000 ${
+          heroVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="mb-8">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 animate-fade-in">
             Jaswanth <span className="text-cyan-400">Guruguntla</span>

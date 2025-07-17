@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Contact = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [contentRef, contentVisible] = useScrollAnimation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,7 +38,12 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Get In <span className="text-cyan-400">Touch</span>
           </h2>
@@ -44,7 +52,12 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div 
+          ref={contentRef}
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-12 transition-all duration-1000 delay-300 ${
+            contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="space-y-8">
             <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">
               <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>

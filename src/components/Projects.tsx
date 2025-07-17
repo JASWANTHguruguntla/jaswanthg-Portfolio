@@ -2,8 +2,11 @@
 import { useState } from "react";
 import { Github, ExternalLink, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Projects = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [projectsRef, projectsVisible] = useScrollAnimation();
   const [filter, setFilter] = useState("all");
 
   const projects = [
@@ -75,7 +78,12 @@ export const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured <span className="text-cyan-400">Projects</span>
           </h2>
@@ -102,7 +110,12 @@ export const Projects = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div 
+          ref={projectsRef}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
+            projectsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {filteredProjects.map((project, index) => (
             <div
               key={index}

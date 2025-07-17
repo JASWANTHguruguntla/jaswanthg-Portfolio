@@ -1,53 +1,73 @@
 
 import { useState } from "react";
 import { Code, Database, Wrench, Cloud, Brain, Shield } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("programming");
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [cardsRef, cardsVisible] = useScrollAnimation();
+  const [competenciesRef, competenciesVisible] = useScrollAnimation();
 
   const skillCategories = {
     programming: {
-      title: "Programming & Frameworks",
+      title: "Programming Languages",
       icon: <Code className="w-6 h-6" />,
       color: "from-blue-500 to-blue-600",
       skills: [
-        "Core Java (OOP, Streams, Multithreading)",
-        "Spring Boot (MVC, Security, Data JPA)",
-        "RESTful API Development",
-        "Exception Handling & Validation"
+        "Java",
+        "Python", 
+        "JavaScript",
+        "C"
+      ]
+    },
+    frameworks: {
+      title: "Frameworks & Libraries",
+      icon: <Wrench className="w-6 h-6" />,
+      color: "from-green-500 to-green-600",
+      skills: [
+        "Spring Boot",
+        "Spring MVC",
+        "Spring Security",
+        "Spring Data JPA",
+        "React.js",
+        "Node.js"
       ]
     },
     database: {
-      title: "Database & Persistence",
+      title: "Databases",
       icon: <Database className="w-6 h-6" />,
-      color: "from-green-500 to-green-600",
+      color: "from-purple-500 to-purple-600",
       skills: [
-        "MySQL Database Design",
-        "SQL Queries & Optimization",
-        "JPA/Hibernate ORM",
-        "Database Schema Management"
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "JPA/Hibernate"
       ]
     },
     tools: {
-      title: "Tools & Testing",
-      icon: <Wrench className="w-6 h-6" />,
-      color: "from-purple-500 to-purple-600",
+      title: "Tools & Technologies",
+      icon: <Cloud className="w-6 h-6" />,
+      color: "from-orange-500 to-orange-600",
       skills: [
-        "Postman API Testing",
-        "JUnit & Mockito Testing",
-        "Maven Build Tool",
-        "Lombok for Productivity"
+        "Git & GitHub",
+        "Postman",
+        "Maven",
+        "Docker",
+        "VS Code",
+        "IntelliJ IDEA"
       ]
     },
     additional: {
-      title: "Additional Skills",
-      icon: <Shield className="w-6 h-6" />,
-      color: "from-orange-500 to-orange-600",
+      title: "Core Competencies",
+      icon: <Brain className="w-6 h-6" />,
+      color: "from-cyan-500 to-cyan-600",
       skills: [
-        "JWT-based Authentication",
-        "Email Integration & Verification",
-        "File Upload/Download Systems",
-        "Password Reset Functionality"
+        "RESTful API Development",
+        "Authentication & Authorization",
+        "Database Design",
+        "Problem Solving",
+        "Software Development",
+        "Team Collaboration"
       ]
     }
   };
@@ -66,7 +86,12 @@ export const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Skills & <span className="text-cyan-400">Expertise</span>
           </h2>
@@ -75,11 +100,19 @@ export const Skills = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {Object.entries(skillCategories).map(([key, category]) => (
+        <div 
+          ref={cardsRef}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16 transition-all duration-1000 delay-300 ${
+            cardsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {Object.entries(skillCategories).map(([key, category], index) => (
             <div
               key={key}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105"
+              className={`bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105 ${
+                cardsVisible ? 'animate-fade-in' : 'opacity-0'
+              }`}
+              style={{ animationDelay: `${index * 100 + 600}ms` }}
             >
               <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} mb-4`}>
                 {category.icon}
@@ -97,7 +130,12 @@ export const Skills = () => {
           ))}
         </div>
 
-        <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/20">
+        <div 
+          ref={competenciesRef}
+          className={`bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/20 transition-all duration-1000 delay-700 ${
+            competenciesVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h3 className="text-2xl font-bold text-white mb-8 text-center">Core Competencies</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {coreCompetencies.map((competency, index) => (
