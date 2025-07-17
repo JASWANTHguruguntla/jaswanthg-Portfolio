@@ -1,4 +1,3 @@
-
 import { GraduationCap, Code, Brain, Trophy, School, BookOpen } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -7,16 +6,16 @@ export const About = () => {
   const [contentRef, contentVisible] = useScrollAnimation();
   const timeline = [
     {
-      year: "2009-2019",
-      title: "Secondary Education",
-      subtitle: "Zilla Parishad High School, Rajampet",
+      year: "2010-2020",
+      title: "Secondary Education", 
+      subtitle: "Sree Sarada English Medium School, Kadiri",
       description: "Completed 10th grade with strong foundation in mathematics and science",
       icon: <School className="w-6 h-6" />
     },
     {
-      year: "2019-2021",
+      year: "2020-2022",
       title: "Intermediate Education",
-      subtitle: "Sri Chaitanya Junior College, Rajampet",
+      subtitle: "Space Junior College, Kadiri",
       description: "Completed 12th grade with MPC (Mathematics, Physics, Chemistry) stream",
       icon: <BookOpen className="w-6 h-6" />
     },
