@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Download, Mail, Github, Linkedin, ChevronDown } from "lucide-react";
+import { Download, Mail, Github, Linkedin, ChevronDown, Instagram, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -98,7 +98,11 @@ export const Hero = () => {
             <Download className="mr-2" size={20} />
             Download Resume
           </Button>
-          <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300">
+          <Button 
+            variant="outline" 
+            className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
+            onClick={() => window.location.href = 'mailto:jaswanthg.aits@gmail.com'}
+          >
             <Mail className="mr-2" size={20} />
             Get in Touch
           </Button>
@@ -122,10 +126,20 @@ export const Hero = () => {
             <Linkedin size={32} />
           </a>
           <a
-            href="mailto:jaswanthg.aits@gmail.com"
+            href="https://www.instagram.com/jaswanth_guruguntla/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
           >
-            <Mail size={32} />
+            <Instagram size={32} />
+          </a>
+          <a
+            href="https://leetcode.com/u/jaswanth_guruguntla/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
+          >
+            <Code2 size={32} />
           </a>
         </div>
 

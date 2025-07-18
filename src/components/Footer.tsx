@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, Instagram, Code2 } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -28,6 +28,22 @@ export const Footer = () => {
                 className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
               >
                 <Linkedin size={24} />
+              </a>
+              <a
+                href="https://www.instagram.com/jaswanth_guruguntla/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+              >
+                <Instagram size={24} />
+              </a>
+              <a
+                href="https://leetcode.com/u/jaswanth_guruguntla/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+              >
+                <Code2 size={24} />
               </a>
               <a
                 href="mailto:jaswanthg.aits@gmail.com"

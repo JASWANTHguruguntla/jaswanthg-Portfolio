@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -101,7 +101,7 @@ export const Contact = () => {
 
             <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">
               <h3 className="text-xl font-bold text-white mb-4">Social Links</h3>
-              <div className="flex space-x-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <a
                   href="https://github.com/JASWANTHguruguntla"
                   target="_blank"
@@ -119,6 +119,24 @@ export const Contact = () => {
                 >
                   <Linkedin className="w-6 h-6 text-cyan-400" />
                   <span className="text-gray-300">LinkedIn</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/jaswanth_guruguntla/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
+                >
+                  <Instagram className="w-6 h-6 text-cyan-400" />
+                  <span className="text-gray-300">Instagram</span>
+                </a>
+                <a
+                  href="https://leetcode.com/u/jaswanth_guruguntla/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
+                >
+                  <Code2 className="w-6 h-6 text-cyan-400" />
+                  <span className="text-gray-300">LeetCode</span>
                 </a>
               </div>
             </div>
