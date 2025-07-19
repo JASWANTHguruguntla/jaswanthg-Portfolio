@@ -118,26 +118,21 @@ export const Certifications = () => {
                     <span className="sr-only">Close</span>
                   </DialogClose>
                 </DialogHeader>
-                <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4">
-                  <iframe
-                    src={cert.pdfUrl}
-                    className="w-full h-full rounded-lg border border-cyan-400/20"
-                    title={`${cert.title} Certificate`}
-                    onLoad={() => console.log('PDF loaded successfully:', cert.pdfUrl)}
-                    onError={(e) => {
-                      console.error('Failed to load PDF:', cert.pdfUrl);
-                    }}
-                  />
-                  {/* Fallback download link */}
-                  <div className="absolute bottom-4 right-4">
+                <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4 flex flex-col items-center justify-center bg-slate-800/50 rounded-lg border border-cyan-400/20">
+                  <div className="text-center space-y-6">
+                    <div className="text-6xl text-cyan-400 mb-4">📄</div>
+                    <h3 className="text-xl font-semibold text-white">Certificate Document</h3>
+                    <p className="text-gray-300 max-w-md">
+                      Click the button below to view the full certificate in a new tab
+                    </p>
                     <a 
                       href={cert.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200 flex items-center gap-2"
+                      className="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-lg font-medium transition-colors duration-200 shadow-lg hover:shadow-cyan-500/25"
                     >
-                      <ExternalLink className="w-4 h-4" />
-                      Open in New Tab
+                      <ExternalLink className="w-5 h-5" />
+                      View Certificate
                     </a>
                   </div>
                 </div>
