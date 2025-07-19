@@ -1,9 +1,16 @@
-import { Award, Calendar, ExternalLink, X } from "lucide-react";
+import { Award, Calendar, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+
+// Set up PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 export const Certifications = () => {
-  const [selectedCert, setSelectedCert] = useState<number | null>(null);
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
   
   const certifications = [
     {
@@ -118,22 +125,73 @@ export const Certifications = () => {
                     <span className="sr-only">Close</span>
                   </DialogClose>
                 </DialogHeader>
-                <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4 flex flex-col items-center justify-center bg-slate-800/50 rounded-lg border border-cyan-400/20">
-                  <div className="text-center space-y-6">
-                    <div className="text-6xl text-cyan-400 mb-4">📄</div>
-                    <h3 className="text-xl font-semibold text-white">Certificate Document</h3>
-                    <p className="text-gray-300 max-w-md">
-                      Click the button below to view the full certificate in a new tab
-                    </p>
-                    <a 
-                      href={cert.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-lg font-medium transition-colors duration-200 shadow-lg hover:shadow-cyan-500/25"
+                <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4">
+                  <div className="w-full h-full bg-slate-800/50 rounded-lg border border-cyan-400/20 overflow-hidden">
+                    <Document
+                      file={cert.pdfUrl}
+                      onLoadSuccess={({ numPages }) => {
+                        setNumPages(numPages);
+                        setPageNumber(1);
+                      }}
+                      loading={
+                        <div className="flex items-center justify-center h-full">
+                          <div className="text-center space-y-4">
+                            <div className="text-cyan-400 text-4xl">📄</div>
+                            <p className="text-white">Loading certificate...</p>
+                          </div>
+                        </div>
+                      }
+                      error={
+                        <div className="flex items-center justify-center h-full">
+                          <div className="text-center space-y-4">
+                            <div className="text-red-400 text-4xl">⚠️</div>
+                            <p className="text-white">Failed to load certificate</p>
+                            <a 
+                              href={cert.pdfUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              Open in New Tab
+                            </a>
+                          </div>
+                        </div>
+                      }
+                      className="h-full w-full"
                     >
-                      <ExternalLink className="w-5 h-5" />
-                      View Certificate
-                    </a>
+                      <div className="flex flex-col h-full">
+                        <Page
+                          pageNumber={pageNumber}
+                          width={800}
+                          className="mx-auto"
+                          renderTextLayer={false}
+                        />
+                        {numPages > 1 && (
+                          <div className="flex items-center justify-center space-x-4 py-4 bg-slate-900/80">
+                            <button
+                              onClick={() => setPageNumber(Math.max(1, pageNumber - 1))}
+                              disabled={pageNumber <= 1}
+                              className="flex items-center gap-2 px-3 py-2 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-600 text-white rounded-lg text-sm transition-colors duration-200"
+                            >
+                              <ChevronLeft className="w-4 h-4" />
+                              Previous
+                            </button>
+                            <span className="text-white text-sm">
+                              Page {pageNumber} of {numPages}
+                            </span>
+                            <button
+                              onClick={() => setPageNumber(Math.min(numPages, pageNumber + 1))}
+                              disabled={pageNumber >= numPages}
+                              className="flex items-center gap-2 px-3 py-2 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-600 text-white rounded-lg text-sm transition-colors duration-200"
+                            >
+                              Next
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </Document>
                   </div>
                 </div>
               </DialogContent>
