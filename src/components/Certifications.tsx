@@ -123,10 +123,23 @@ export const Certifications = () => {
                     src={cert.pdfUrl}
                     className="w-full h-full rounded-lg border border-cyan-400/20"
                     title={`${cert.title} Certificate`}
+                    onLoad={() => console.log('PDF loaded successfully:', cert.pdfUrl)}
                     onError={(e) => {
                       console.error('Failed to load PDF:', cert.pdfUrl);
                     }}
                   />
+                  {/* Fallback download link */}
+                  <div className="absolute bottom-4 right-4">
+                    <a 
+                      href={cert.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200 flex items-center gap-2"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Open in New Tab
+                    </a>
+                  </div>
                 </div>
               </DialogContent>
             </Dialog>
