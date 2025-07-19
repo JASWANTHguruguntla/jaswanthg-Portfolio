@@ -1,5 +1,5 @@
-import { Award, Calendar, ExternalLink } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Award, Calendar, ExternalLink, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
 
 export const Certifications = () => {
@@ -106,16 +106,26 @@ export const Certifications = () => {
               </DialogTrigger>
               
               <DialogContent className="max-w-4xl w-full h-[90vh] bg-slate-900 border-cyan-400/20">
-                <DialogHeader>
-                  <DialogTitle className="text-white text-xl">
+                <DialogHeader className="relative">
+                  <DialogTitle className="text-white text-xl pr-8">
                     {cert.title} - {cert.issuer}
                   </DialogTitle>
+                  <DialogDescription className="text-gray-300">
+                    View the full certificate document
+                  </DialogDescription>
+                  <DialogClose className="absolute right-0 top-0 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                    <X className="h-6 w-6 text-white hover:text-cyan-400" />
+                    <span className="sr-only">Close</span>
+                  </DialogClose>
                 </DialogHeader>
-                <div className="flex-1 w-full h-full">
+                <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4">
                   <iframe
                     src={cert.pdfUrl}
-                    className="w-full h-full rounded-lg"
+                    className="w-full h-full rounded-lg border border-cyan-400/20"
                     title={`${cert.title} Certificate`}
+                    onError={(e) => {
+                      console.error('Failed to load PDF:', cert.pdfUrl);
+                    }}
                   />
                 </div>
               </DialogContent>
