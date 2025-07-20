@@ -15,8 +15,8 @@ export const Projects = () => {
       description: "AI tool that summarizes YouTube videos into key insights using proxy rotation and YouTube Data API fallback, achieving 98% success rate across 1,000+ test videos.",
       tech: ["Python", "Gemini AI", "Streamlit", "YouTube API"],
       category: "ai",
-      github: "https://github.com/JaswanthG",
-      demo: "#",
+      github: "https://github.com/JASWANTHguruguntla/Youtube-Summarizer-Pro",
+      demo: "https://jaswanth-youtube-summarizer-pro.streamlit.app/",
       features: ["Proxy rotation system", "Custom prompt engineering", "Intuitive Streamlit interface", "Intelligent caching"]
     },
     {
@@ -24,8 +24,8 @@ export const Projects = () => {
       description: "Transforming photos into artistic pencil sketches with AI. Developed OpenCV tool with adjustable artistic effects and efficient image processing.",
       tech: ["Python", "OpenCV", "NumPy"],
       category: "ai",
-      github: "https://github.com/JaswanthG",
-      demo: "#",
+      github: "https://github.com/JASWANTHguruguntla/Pencil-Art-Image-Generator",
+      demo: "https://github.com/JASWANTHguruguntla/Pencil-Art-Image-Generator",
       features: ["Blur inversion", "Edge detection", "URL image fetching", "Error handling"]
     },
     {
@@ -33,8 +33,8 @@ export const Projects = () => {
       description: "Interactive task management web application with persistent storage. Features include task counter, clear all functionality, and responsive design.",
       tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
       category: "frontend",
-      github: "https://github.com/JaswanthG",
-      demo: "#",
+      github: "https://github.com/JASWANTHguruguntla/Todo-App",
+      demo: "https://jaswanthtodoo.ccbp.tech",
       features: ["CRUD operations", "Local storage", "Responsive design", "Modern CSS techniques"]
     },
     {
@@ -42,8 +42,8 @@ export const Projects = () => {
       description: "Modern, responsive personal portfolio showcasing projects and skills. Built with clean design principles and optimal performance.",
       tech: ["HTML5", "CSS3", "JavaScript", "Flexbox"],
       category: "frontend",
-      github: "https://github.com/JaswanthG",
-      demo: "#",
+      github: "https://github.com/JASWANTHguruguntla/jaswanthg-Portfolio",
+      demo: "https://jaswanth.lovable.app",
       features: ["Responsive design", "Modern UI/UX", "Cross-browser compatibility", "Performance optimized"]
     },
     {
@@ -51,8 +51,8 @@ export const Projects = () => {
       description: "Full-featured restaurant website with menu display, reservation system, and modern responsive design.",
       tech: ["HTML5", "CSS3", "JavaScript"],
       category: "frontend",
-      github: "https://github.com/JaswanthG",
-      demo: "#",
+      github: "https://github.com/JASWANTHguruguntla/Restaurant-Page",
+      demo: "https://jaswanthgfood.ccbp.tech/",
       features: ["Interactive menu", "Contact forms", "Mobile responsive", "Modern animations"]
     },
     {
@@ -180,7 +180,7 @@ export const Projects = () => {
         <div className="text-center mt-12">
           <Button 
             className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
-            onClick={() => window.open("https://github.com/JaswanthG", "_blank")}
+            onClick={() => window.open("https://github.com/JASWANTHguruguntla", "_blank")}
           >
             <Github className="mr-2" size={20} />
             View All Projects on GitHub
