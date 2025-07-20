@@ -107,8 +107,8 @@ export const Certifications = () => {
                 </div>
               </DialogTrigger>
               
-              <DialogContent className="max-w-4xl w-full h-[90vh] bg-slate-900 border-cyan-400/20">
-                <DialogHeader className="relative">
+              <DialogContent className="max-w-4xl w-full h-[90vh] bg-slate-900 border-cyan-400/20 flex flex-col">
+                <DialogHeader className="relative flex-shrink-0">
                   <DialogTitle className="text-white text-xl pr-8">
                     {cert.title} - {cert.issuer}
                   </DialogTitle>
@@ -120,32 +120,35 @@ export const Certifications = () => {
                     <span className="sr-only">Close</span>
                   </DialogClose>
                 </DialogHeader>
-                <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4">
-                  <div className="w-full h-full bg-slate-800/50 rounded-lg border border-cyan-400/20 overflow-hidden flex flex-col">
-                    <div className="flex-1 flex items-center justify-center p-4">
-                      <img 
-                        src={cert.imageUrl} 
-                        alt={`${cert.title} Certificate`}
-                        className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
-                        onLoad={(e) => {
-                          console.log(`Certificate image loaded: ${cert.imageUrl}`);
-                        }}
-                        onError={(e) => {
-                          console.error(`Failed to load certificate image: ${cert.imageUrl}`);
-                        }}
-                      />
-                    </div>
-                    <div className="p-4 bg-slate-900/80 border-t border-cyan-400/20">
-                      <a 
-                        href={cert.pdfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200 w-full justify-center"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Open PDF Certificate
-                      </a>
-                    </div>
+                
+                <div className="flex-1 flex flex-col min-h-0 mt-4">
+                  <div className="flex-1 bg-slate-800/50 rounded-lg border border-cyan-400/20 overflow-hidden flex items-center justify-center p-4">
+                    <img 
+                      src={cert.imageUrl} 
+                      alt={`${cert.title} Certificate`}
+                      className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
+                      onLoad={(e) => {
+                        console.log(`Certificate image loaded: ${cert.imageUrl}`);
+                      }}
+                      onError={(e) => {
+                        console.error(`Failed to load certificate image: ${cert.imageUrl}`);
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="flex-shrink-0 mt-4 p-4 bg-slate-900/80 rounded-lg border border-cyan-400/20">
+                    <a 
+                      href={cert.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-200 w-full justify-center"
+                      onClick={(e) => {
+                        console.log(`Attempting to open PDF: ${cert.pdfUrl}`);
+                      }}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Open PDF Certificate
+                    </a>
                   </div>
                 </div>
               </DialogContent>
