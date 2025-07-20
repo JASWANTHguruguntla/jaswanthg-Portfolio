@@ -1,17 +1,7 @@
-import { Award, Calendar, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Award, Calendar, ExternalLink, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog";
-import { useState } from "react";
-import { Document, Page, pdfjs } from 'react-pdf';
-
-// Set up PDF.js worker with fallback
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url,
-).toString();
 
 export const Certifications = () => {
-  const [numPages, setNumPages] = useState<number>(0);
-  const [pageNumber, setPageNumber] = useState<number>(1);
   
   const certifications = [
     {
@@ -21,6 +11,7 @@ export const Certifications = () => {
       description: "Foundation course in AI concepts, machine learning algorithms, and practical AI implementation.",
       skills: ["Machine Learning", "AI Concepts", "Data Science", "Python for AI"],
       color: "from-cyan-500 to-cyan-600",
+      imageUrl: "/certificates/ai-fundamentals.jpg", // Add your certificate image here
       pdfUrl: "/certificates/ai-fundamentals.pdf"
     },
     {
@@ -30,6 +21,7 @@ export const Certifications = () => {
       description: "Comprehensive certification covering ServiceNow platform administration, user management, and system configuration.",
       skills: ["Platform Administration", "User Management", "System Configuration", "Workflow Management"],
       color: "from-blue-500 to-blue-600",
+      imageUrl: "/certificates/servicenow-csa.jpg", // Add your certificate image here
       pdfUrl: "/certificates/servicenow-csa.pdf"
     },
     {
@@ -39,6 +31,7 @@ export const Certifications = () => {
       description: "Certification demonstrating proficiency in basic SQL operations, queries, and database management.",
       skills: ["SQL Queries", "Database Management", "Data Filtering", "Table Operations"],
       color: "from-green-500 to-green-600",
+      imageUrl: "/certificates/sql-basic-hackerrank.jpg", // Add your certificate image here
       pdfUrl: "/certificates/sql-basic-hackerrank.pdf"
     },
     {
@@ -48,6 +41,7 @@ export const Certifications = () => {
       description: "Advanced application development certification focusing on modern programming practices and software architecture.",
       skills: ["Application Development", "Software Architecture", "Programming", "System Design"],
       color: "from-orange-500 to-orange-600",
+      imageUrl: "/certificates/certified-app-developer.jpg", // Add your certificate image here
       pdfUrl: "/certificates/certified-app-developer.pdf"
     }
   ];
@@ -119,7 +113,7 @@ export const Certifications = () => {
                     {cert.title} - {cert.issuer}
                   </DialogTitle>
                   <DialogDescription className="text-gray-300">
-                    View the full certificate document
+                    View the certificate image
                   </DialogDescription>
                   <DialogClose className="absolute right-0 top-0 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                     <X className="h-6 w-6 text-white hover:text-cyan-400" />
@@ -127,72 +121,37 @@ export const Certifications = () => {
                   </DialogClose>
                 </DialogHeader>
                 <div className="flex-1 w-full h-[calc(100%-4rem)] mt-4">
-                  <div className="w-full h-full bg-slate-800/50 rounded-lg border border-cyan-400/20 overflow-hidden">
-                    <Document
-                      file={cert.pdfUrl}
-                      onLoadSuccess={({ numPages }) => {
-                        setNumPages(numPages);
-                        setPageNumber(1);
-                      }}
-                      loading={
-                        <div className="flex items-center justify-center h-full">
-                          <div className="text-center space-y-4">
-                            <div className="text-cyan-400 text-4xl">📄</div>
-                            <p className="text-white">Loading certificate...</p>
-                          </div>
-                        </div>
-                      }
-                      error={
-                        <div className="flex items-center justify-center h-full">
-                          <div className="text-center space-y-4">
-                            <div className="text-red-400 text-4xl">⚠️</div>
-                            <p className="text-white">Failed to load certificate</p>
-                            <a 
-                              href={cert.pdfUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              Open in New Tab
-                            </a>
-                          </div>
-                        </div>
-                      }
-                      className="h-full w-full"
-                    >
-                      <div className="flex flex-col h-full">
-                        <Page
-                          pageNumber={pageNumber}
-                          width={800}
-                          className="mx-auto"
-                          renderTextLayer={false}
-                        />
-                        {numPages > 1 && (
-                          <div className="flex items-center justify-center space-x-4 py-4 bg-slate-900/80">
-                            <button
-                              onClick={() => setPageNumber(Math.max(1, pageNumber - 1))}
-                              disabled={pageNumber <= 1}
-                              className="flex items-center gap-2 px-3 py-2 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-600 text-white rounded-lg text-sm transition-colors duration-200"
-                            >
-                              <ChevronLeft className="w-4 h-4" />
-                              Previous
-                            </button>
-                            <span className="text-white text-sm">
-                              Page {pageNumber} of {numPages}
-                            </span>
-                            <button
-                              onClick={() => setPageNumber(Math.min(numPages, pageNumber + 1))}
-                              disabled={pageNumber >= numPages}
-                              className="flex items-center gap-2 px-3 py-2 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-600 text-white rounded-lg text-sm transition-colors duration-200"
-                            >
-                              Next
-                              <ChevronRight className="w-4 h-4" />
-                            </button>
-                          </div>
-                        )}
+                  <div className="w-full h-full bg-slate-800/50 rounded-lg border border-cyan-400/20 overflow-hidden flex flex-col">
+                    <div className="flex-1 flex items-center justify-center p-4">
+                      <img 
+                        src={cert.imageUrl} 
+                        alt={`${cert.title} Certificate`}
+                        className="max-w-full max-h-full object-contain rounded-lg"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          const sibling = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (sibling) {
+                            sibling.style.display = 'flex';
+                          }
+                        }}
+                      />
+                      <div className="hidden flex-col items-center justify-center text-center space-y-4 h-full">
+                        <div className="text-yellow-400 text-4xl">⚠️</div>
+                        <p className="text-white">Certificate image not found</p>
+                        <p className="text-gray-400 text-sm">Please upload the certificate image to display here</p>
                       </div>
-                    </Document>
+                    </div>
+                    <div className="p-4 bg-slate-900/80 border-t border-cyan-400/20">
+                      <a 
+                        href={cert.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200 w-full justify-center"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Open PDF Certificate
+                      </a>
+                    </div>
                   </div>
                 </div>
               </DialogContent>
