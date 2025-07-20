@@ -126,20 +126,14 @@ export const Certifications = () => {
                       <img 
                         src={cert.imageUrl} 
                         alt={`${cert.title} Certificate`}
-                        className="max-w-full max-h-full object-contain rounded-lg"
+                        className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
+                        onLoad={(e) => {
+                          console.log(`Certificate image loaded: ${cert.imageUrl}`);
+                        }}
                         onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          const sibling = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (sibling) {
-                            sibling.style.display = 'flex';
-                          }
+                          console.error(`Failed to load certificate image: ${cert.imageUrl}`);
                         }}
                       />
-                      <div className="hidden flex-col items-center justify-center text-center space-y-4 h-full">
-                        <div className="text-yellow-400 text-4xl">⚠️</div>
-                        <p className="text-white">Certificate image not found</p>
-                        <p className="text-gray-400 text-sm">Please upload the certificate image to display here</p>
-                      </div>
                     </div>
                     <div className="p-4 bg-slate-900/80 border-t border-cyan-400/20">
                       <a 
