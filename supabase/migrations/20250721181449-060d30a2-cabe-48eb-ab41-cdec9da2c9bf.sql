@@ -1,0 +1,2 @@
+-- Create edge function for sending contact emails
+-- This will be implemented as an edge function, no database changes needed for basic email sending
