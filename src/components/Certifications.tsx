@@ -7,32 +7,42 @@ export const Certifications = () => {
     {
       title: "Artificial Intelligence Fundamentals",
       issuer: "IBM SkillsBuild",
-      date: "2025",
+      date: "April 4, 2025",
       description: "Foundation course in AI concepts, machine learning algorithms, and practical AI implementation.",
       skills: ["Machine Learning", "AI Concepts", "Data Science", "Python for AI"],
       color: "from-cyan-500 to-cyan-600",
-      imageUrl: "/certificates/ai-fundamentals.jpg", // Add your certificate image here
+      imageUrl: "/certificates/ai-fundamentals.jpg",
       pdfUrl: "/certificates/ai-fundamentals.pdf"
-    },
-    {
-      title: "ServiceNow Certified System Administrator (CSA)",
-      issuer: "ServiceNow", 
-      date: "2024",
-      description: "Comprehensive certification covering ServiceNow platform administration, user management, and system configuration.",
-      skills: ["Platform Administration", "User Management", "System Configuration", "Workflow Management"],
-      color: "from-blue-500 to-blue-600",
-      imageUrl: "/certificates/servicenow-csa.jpg", // Add your certificate image here
-      pdfUrl: "/certificates/servicenow-csa.pdf"
     },
     {
       title: "SQL (Basic)",
       issuer: "HackerRank",
-      date: "2024",
+      date: "June 12, 2025",
       description: "Certification demonstrating proficiency in basic SQL operations, queries, and database management.",
       skills: ["SQL Queries", "Database Management", "Data Filtering", "Table Operations"],
       color: "from-green-500 to-green-600",
-      imageUrl: "/certificates/sql-basic-hackerrank.jpg", // Add your certificate image here
+      imageUrl: "/certificates/sql-basic-hackerrank.jpg",
       pdfUrl: "/certificates/sql-basic-hackerrank.pdf"
+    },
+    {
+      title: "Full Stack Java Internship",
+      issuer: "SkillDzire",
+      date: "May 5 - June 20, 2025",
+      description: "Successfully completed a comprehensive internship program in Full Stack Java development, covering both frontend and backend technologies.",
+      skills: ["Java", "Spring Boot", "React", "MySQL", "REST APIs", "Full Stack Development"],
+      color: "from-purple-500 to-purple-600",
+      imageUrl: "/certificates/skilldzire-fullstack-java.jpg",
+      pdfUrl: "/certificates/skilldzire-fullstack-java.pdf"
+    },
+    {
+      title: "ServiceNow Certified System Administrator (CSA)",
+      issuer: "ServiceNow", 
+      date: "July 14, 2025",
+      description: "Comprehensive certification covering ServiceNow platform administration, user management, and system configuration.",
+      skills: ["Platform Administration", "User Management", "System Configuration", "Workflow Management"],
+      color: "from-blue-500 to-blue-600",
+      imageUrl: "/certificates/servicenow-csa.jpg",
+      pdfUrl: "/certificates/servicenow-csa.pdf"
     },
     {
       title: "Certified Application Developer",
@@ -41,18 +51,8 @@ export const Certifications = () => {
       description: "Advanced application development certification focusing on modern programming practices and software architecture.",
       skills: ["Application Development", "Software Architecture", "Programming", "System Design"],
       color: "from-orange-500 to-orange-600",
-      imageUrl: "/certificates/certified-app-developer.jpg", // Add your certificate image here
+      imageUrl: "/certificates/certified-app-developer.jpg",
       pdfUrl: "/certificates/certified-app-developer.pdf"
-    },
-    {
-      title: "Full Stack Java Internship",
-      issuer: "SkillDzire",
-      date: "May - June 2025",
-      description: "Successfully completed a comprehensive internship program in Full Stack Java development, covering both frontend and backend technologies.",
-      skills: ["Java", "Spring Boot", "React", "MySQL", "REST APIs", "Full Stack Development"],
-      color: "from-purple-500 to-purple-600",
-      imageUrl: "/certificates/skilldzire-fullstack-java.jpg",
-      pdfUrl: "/certificates/skilldzire-fullstack-java.pdf"
     }
   ];
 
