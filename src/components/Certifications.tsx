@@ -43,6 +43,16 @@ export const Certifications = () => {
       color: "from-orange-500 to-orange-600",
       imageUrl: "/certificates/certified-app-developer.jpg", // Add your certificate image here
       pdfUrl: "/certificates/certified-app-developer.pdf"
+    },
+    {
+      title: "Full Stack Java Internship",
+      issuer: "SkillDzire",
+      date: "May - June 2025",
+      description: "Successfully completed a comprehensive internship program in Full Stack Java development, covering both frontend and backend technologies.",
+      skills: ["Java", "Spring Boot", "React", "MySQL", "REST APIs", "Full Stack Development"],
+      color: "from-purple-500 to-purple-600",
+      imageUrl: "/certificates/skilldzire-fullstack-java.jpg",
+      pdfUrl: "/certificates/skilldzire-fullstack-java.pdf"
     }
   ];
 
@@ -162,7 +172,7 @@ export const Certifications = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">4+</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">5+</div>
               <div className="text-gray-300">Certifications</div>
             </div>
             <div className="text-center">
