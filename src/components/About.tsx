@@ -23,7 +23,7 @@ export const About = () => {
       year: "2022-2026",
       title: "B.Tech CSE (AI)",
       subtitle: "Annamacharya Institute of Technology and Sciences",
-      description: "CGPA: 8.71 • Specializing in Artificial Intelligence",
+      description: "CGPA: 8.81 • Specializing in Artificial Intelligence",
       icon: <GraduationCap className="w-6 h-6" />
     },
     {
@@ -93,7 +93,7 @@ export const About = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">
-                <div className="text-3xl font-bold text-cyan-400 mb-2">8.71</div>
+                <div className="text-3xl font-bold text-cyan-400 mb-2">8.81</div>
                 <div className="text-gray-300">CGPA</div>
               </div>
               <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 text-center">

@@ -43,7 +43,7 @@ export const Projects = () => {
       tech: ["HTML5", "CSS3", "JavaScript", "Flexbox"],
       category: "frontend",
       github: "https://github.com/JASWANTHguruguntla/jaswanthg-Portfolio",
-      demo: "https://jaswanth.lovable.app",
+      demo: "https://jaswanthg.lovable.app",
       features: ["Responsive design", "Modern UI/UX", "Cross-browser compatibility", "Performance optimized"]
     },
     {
@@ -55,15 +55,6 @@ export const Projects = () => {
       demo: "https://jaswanthgfood.ccbp.tech/",
       features: ["Interactive menu", "Contact forms", "Mobile responsive", "Modern animations"]
     },
-    {
-      title: "Task Management System",
-      description: "Comprehensive task management application with user authentication, project organization, and real-time updates.",
-      tech: ["Python", "Flask", "SQL", "HTML/CSS"],
-      category: "fullstack",
-      github: "https://github.com/JaswanthG",
-      demo: "#",
-      features: ["User authentication", "Database integration", "RESTful API", "Real-time updates"]
-    }
   ];
 
   const categories = [

@@ -20,10 +20,16 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    // Create WhatsApp message
+    const message = `Hi, I'm ${formData.name}.\n\nSubject: ${formData.subject}\n\nMessage: ${formData.message}\n\nMy Email: ${formData.email}`;
+    const whatsappUrl = `https://wa.me/918639944845?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
+      title: "Redirecting to WhatsApp!",
+      description: "You'll be redirected to WhatsApp to send your message.",
     });
     setFormData({ name: "", email: "", subject: "", message: "" });
   };

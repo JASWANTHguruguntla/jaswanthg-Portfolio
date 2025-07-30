@@ -46,13 +46,33 @@ export const Certifications = () => {
     },
     {
       title: "Certified Application Developer",
-      issuer: "Technical Institute",
+      issuer: "Technical Institute", 
       date: "2024 - In Progress",
       description: "Advanced application development certification focusing on modern programming practices and software architecture.",
       skills: ["Application Development", "Software Architecture", "Programming", "System Design"],
       color: "from-orange-500 to-orange-600",
       imageUrl: "/certificates/certified-app-developer.jpg",
       pdfUrl: "/certificates/certified-app-developer.pdf"
+    },
+    {
+      title: "GenAI Powered Data Analytics Job Simulation",
+      issuer: "Accenture",
+      date: "2025",
+      description: "Comprehensive simulation program focusing on AI-powered data analytics, machine learning implementation, and real-world business problem solving.",
+      skills: ["Generative AI", "Data Analytics", "Machine Learning", "Business Intelligence", "Python", "Data Visualization"],
+      color: "from-indigo-500 to-indigo-600",
+      imageUrl: "/certificates/genai-data-analytics.jpg",
+      pdfUrl: "/certificates/genai-data-analytics.pdf"
+    },
+    {
+      title: "Full Stack Developer Bootcamp",
+      issuer: "Coding Academy",
+      date: "2025",
+      description: "Intensive bootcamp covering modern full-stack development with hands-on projects and industry best practices.",
+      skills: ["React", "Node.js", "MongoDB", "Express.js", "Full Stack Development", "RESTful APIs", "Database Design"],
+      color: "from-emerald-500 to-emerald-600",
+      imageUrl: "/certificates/fullstack-bootcamp.jpg",
+      pdfUrl: "/certificates/fullstack-bootcamp.pdf"
     }
   ];
 
@@ -172,7 +192,7 @@ export const Certifications = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">5+</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">7+</div>
               <div className="text-gray-300">Certifications</div>
             </div>
             <div className="text-center">
