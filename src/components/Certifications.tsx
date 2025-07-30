@@ -56,20 +56,20 @@ export const Certifications = () => {
     },
     {
       title: "GenAI Powered Data Analytics Job Simulation",
-      issuer: "Accenture",
-      date: "2025",
-      description: "Comprehensive simulation program focusing on AI-powered data analytics, machine learning implementation, and real-world business problem solving.",
-      skills: ["Generative AI", "Data Analytics", "Machine Learning", "Business Intelligence", "Python", "Data Visualization"],
+      issuer: "TATA with Forage",
+      date: "July 28th, 2025",
+      description: "Completed practical tasks in exploratory data analysis, risk profiling, predicting delinquency with AI, business reporting, and implementing AI-driven collections strategy.",
+      skills: ["Generative AI", "Data Analytics", "Machine Learning", "Risk Profiling", "Business Intelligence", "Python", "AI Strategy"],
       color: "from-indigo-500 to-indigo-600",
       imageUrl: "/certificates/genai-data-analytics.jpg",
       pdfUrl: "/certificates/genai-data-analytics.pdf"
     },
     {
-      title: "Full Stack Developer Bootcamp",
-      issuer: "Coding Academy",
+      title: "Full Stack Developer Bootcamp - Master Frontend to Backend",
+      issuer: "GeeksforGeeks",
       date: "2025",
-      description: "Intensive bootcamp covering modern full-stack development with hands-on projects and industry best practices.",
-      skills: ["React", "Node.js", "MongoDB", "Express.js", "Full Stack Development", "RESTful APIs", "Database Design"],
+      description: "Successfully completed a comprehensive 6-week course on Full Stack Developer Bootcamp covering modern frontend and backend technologies.",
+      skills: ["React", "Node.js", "JavaScript", "HTML/CSS", "Full Stack Development", "RESTful APIs", "Database Management"],
       color: "from-emerald-500 to-emerald-600",
       imageUrl: "/certificates/fullstack-bootcamp.jpg",
       pdfUrl: "/certificates/fullstack-bootcamp.pdf"

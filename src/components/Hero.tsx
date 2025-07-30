@@ -86,7 +86,7 @@ export const Hero = () => {
         </div>
 
         <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in">
-          B.Tech CSE (AI) Final Year Student | CGPA: 8.71 | ServiceNow CSA Certified | 
+          B.Tech CSE (AI) Final Year Student | CGPA: 8.81 | ServiceNow CSA Certified | 
           Passionate about building scalable solutions and exploring AI frontiers
         </p>
 
