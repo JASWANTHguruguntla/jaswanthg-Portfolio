@@ -1,9 +1,12 @@
-import { GraduationCap, Code, Brain, Trophy, School, BookOpen } from "lucide-react";
+import { GraduationCap, Code, Brain, Trophy, School, BookOpen, ChevronDown } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useEffect, useState, useRef } from "react";
 
 export const About = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [contentRef, contentVisible] = useScrollAnimation();
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const timeline = [
     {
       year: "2010-2020",
@@ -48,6 +51,26 @@ export const About = () => {
       icon: <Brain className="w-6 h-6" />
     }
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (timelineRef.current) {
+        const rect = timelineRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        
+        // Calculate progress based on how much of the timeline is visible
+        const progress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (elementHeight + windowHeight)));
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial calculation
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section id="about" className="py-20 bg-slate-800/50">
@@ -103,8 +126,23 @@ export const About = () => {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative" ref={timelineRef}>
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-purple-400"></div>
+            
+            {/* Animated pointer that flows with scroll */}
+            <div 
+              className="absolute left-6 w-6 h-6 -translate-x-1/2 -translate-y-1/2 z-10 transition-transform duration-300 ease-out"
+              style={{
+                top: `${scrollProgress * 100}%`,
+                opacity: scrollProgress > 0 && scrollProgress < 1 ? 1 : 0
+              }}
+            >
+              <div className="w-6 h-6 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full shadow-lg animate-pulse">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-ping opacity-75"></div>
+                <ChevronDown className="w-3 h-3 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              </div>
+            </div>
+            
             <div className="space-y-8">
               {timeline.map((item, index) => (
                 <div key={index} className="relative flex items-start">
