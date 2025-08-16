@@ -60,9 +60,16 @@ export const About = () => {
         const elementTop = rect.top;
         const elementHeight = rect.height;
         
-        // Calculate progress based on how much of the timeline is visible
-        const progress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (elementHeight + windowHeight)));
-        setScrollProgress(progress);
+        // Only start when the timeline section is visible
+        if (elementTop <= windowHeight * 0.7 && elementTop + elementHeight >= windowHeight * 0.3) {
+          // Calculate progress more accurately
+          const visibleStart = Math.max(0, windowHeight * 0.7 - elementTop);
+          const visibleHeight = Math.min(elementHeight, windowHeight * 0.7);
+          const progress = Math.max(0, Math.min(1, visibleStart / visibleHeight));
+          setScrollProgress(progress);
+        } else {
+          setScrollProgress(0);
+        }
       }
     };
 
@@ -131,15 +138,17 @@ export const About = () => {
             
             {/* Animated pointer that flows with scroll */}
             <div 
-              className="absolute left-6 w-6 h-6 -translate-x-1/2 -translate-y-1/2 z-10 transition-transform duration-300 ease-out"
+              className="absolute left-8 w-4 h-4 -translate-x-1/2 z-10 transition-all duration-500 ease-out"
               style={{
                 top: `${scrollProgress * 100}%`,
-                opacity: scrollProgress > 0 && scrollProgress < 1 ? 1 : 0
+                opacity: scrollProgress > 0 ? 1 : 0,
+                transform: `translateX(-50%) translateY(-50%) scale(${scrollProgress > 0 ? 1 : 0})`
               }}
             >
-              <div className="w-6 h-6 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full shadow-lg animate-pulse">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-ping opacity-75"></div>
-                <ChevronDown className="w-3 h-3 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              <div className="relative">
+                <div className="w-4 h-4 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full shadow-lg animate-pulse border-2 border-slate-900"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-ping opacity-50"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-full animate-pulse"></div>
               </div>
             </div>
             
