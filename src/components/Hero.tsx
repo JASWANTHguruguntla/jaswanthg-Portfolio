@@ -76,7 +76,7 @@ export const Hero = () => {
         <div className="mb-8">
           <div className="mb-6 flex justify-center animate-fade-in">
             <img
-              src="/profile-photo.png"
+              src="/profilepicture.jpg"
               alt="Jaswanth Guruguntla"
               className="w-32 h-32 rounded-full border-2 border-white/20 shadow-lg hover:scale-105 transition-transform duration-300 object-cover"
             />
