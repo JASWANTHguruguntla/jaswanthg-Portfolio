@@ -60,20 +60,28 @@ export const About = () => {
         const elementTop = rect.top;
         const elementHeight = rect.height;
         
-        // Only start when the timeline section is visible
-        if (elementTop <= windowHeight * 0.7 && elementTop + elementHeight >= windowHeight * 0.3) {
-          // Calculate progress more accurately
-          const visibleStart = Math.max(0, windowHeight * 0.7 - elementTop);
-          const visibleHeight = Math.min(elementHeight, windowHeight * 0.7);
-          const progress = Math.max(0, Math.min(1, visibleStart / visibleHeight));
-          setScrollProgress(progress);
-        } else {
+        // Start when section is 80% visible from top, end when it's 20% from bottom
+        const startTrigger = windowHeight * 0.8;
+        const endTrigger = windowHeight * 0.2;
+        
+        if (elementTop <= startTrigger && elementTop + elementHeight >= endTrigger) {
+          // Calculate progress more slowly and accurately
+          const totalScrollableDistance = elementHeight + (startTrigger - endTrigger);
+          const currentScrolled = startTrigger - elementTop;
+          const progress = Math.max(0, Math.min(1, currentScrolled / totalScrollableDistance));
+          
+          // Apply easing for smoother movement
+          const easedProgress = progress * progress * (3 - 2 * progress); // smooth step function
+          setScrollProgress(easedProgress);
+        } else if (elementTop > startTrigger) {
           setScrollProgress(0);
+        } else if (elementTop + elementHeight < endTrigger) {
+          setScrollProgress(1);
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial calculation
     
     return () => window.removeEventListener('scroll', handleScroll);
