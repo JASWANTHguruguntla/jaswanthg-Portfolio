@@ -1,7 +1,14 @@
-import { Award, Calendar, ExternalLink, X } from "lucide-react";
+import { Award, Calendar, ExternalLink, X, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Certifications = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [contentRef, contentVisible] = useScrollAnimation();
+  
+  // Check if device is mobile
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
   const certifications = [
     {
@@ -79,7 +86,12 @@ export const Certifications = () => {
   return (
     <section id="certifications" className="py-20 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Certifications & <span className="text-cyan-400">Achievements</span>
           </h2>
@@ -88,54 +100,62 @@ export const Certifications = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certifications.map((cert, index) => (
-            <Dialog key={index}>
-              <DialogTrigger asChild>
-                <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group hover:transform hover:scale-105 cursor-pointer">
-                  <div className={`h-2 bg-gradient-to-r ${cert.color}`}></div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center space-x-3">
-                        <div className={`p-2 rounded-full bg-gradient-to-r ${cert.color}`}>
-                          <Award className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
-                            {cert.title}
-                          </h3>
-                          <p className="text-cyan-400 font-medium">{cert.issuer}</p>
+        <div 
+          ref={contentRef}
+          className={`transition-all duration-1000 delay-300 ${
+            contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-4">
+              {certifications.map((cert, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group hover:transform hover:scale-105 cursor-pointer h-full">
+                        <div className={`h-2 bg-gradient-to-r ${cert.color}`}></div>
+                        
+                        <div className="p-6 h-full flex flex-col">
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center space-x-3">
+                              <div className={`p-2 rounded-full bg-gradient-to-r ${cert.color}`}>
+                                <Award className="w-6 h-6 text-white" />
+                              </div>
+                              <div>
+                                <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                                  {cert.title}
+                                </h3>
+                                <p className="text-cyan-400 font-medium">{cert.issuer}</p>
+                              </div>
+                            </div>
+                            <ExternalLink className="w-5 h-5 text-gray-400 hover:text-cyan-400 transition-colors duration-200" />
+                          </div>
+
+                          <div className="flex items-center text-gray-300 mb-4">
+                            <Calendar className="w-4 h-4 mr-2" />
+                            <span className="text-sm">{cert.date}</span>
+                          </div>
+
+                          <p className="text-gray-300 mb-4 leading-relaxed text-sm flex-grow">
+                            {cert.description}
+                          </p>
+
+                          <div className="space-y-2 mt-auto">
+                            <h4 className="text-sm font-semibold text-cyan-400">Skills Acquired:</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {cert.skills.map((skill, i) => (
+                                <span
+                                  key={i}
+                                  className="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <ExternalLink className="w-5 h-5 text-gray-400 hover:text-cyan-400 transition-colors duration-200" />
-                    </div>
-
-                    <div className="flex items-center text-gray-300 mb-4">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{cert.date}</span>
-                    </div>
-
-                    <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                      {cert.description}
-                    </p>
-
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-cyan-400">Skills Acquired:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {cert.skills.map((skill, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </DialogTrigger>
+                    </DialogTrigger>
               
               <DialogContent className="max-w-4xl w-full h-[90vh] bg-slate-900 border-cyan-400/20 flex flex-col">
                 <DialogHeader className="relative flex-shrink-0">
@@ -167,23 +187,42 @@ export const Certifications = () => {
                   </div>
                   
                   <div className="flex-shrink-0 mt-4 p-4 bg-slate-900/80 rounded-lg border border-cyan-400/20">
-                    <a 
-                      href={cert.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-200 w-full justify-center"
-                      onClick={(e) => {
-                        console.log(`Attempting to open PDF: ${cert.pdfUrl}`);
-                      }}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Open PDF Certificate
-                    </a>
+                    {isMobile ? (
+                      <a 
+                        href={cert.pdfUrl}
+                        download
+                        className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-200 w-full justify-center"
+                        onClick={(e) => {
+                          console.log(`Downloading certificate: ${cert.pdfUrl}`);
+                        }}
+                      >
+                        <Download className="w-4 h-4" />
+                        Download Certificate
+                      </a>
+                    ) : (
+                      <a 
+                        href={cert.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-200 w-full justify-center"
+                        onClick={(e) => {
+                          console.log(`Attempting to open PDF: ${cert.pdfUrl}`);
+                        }}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Open PDF Certificate
+                      </a>
+                    )}
                   </div>
                 </div>
               </DialogContent>
-            </Dialog>
-          ))}
+                  </Dialog>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+            <CarouselNext className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+          </Carousel>
         </div>
 
         <div className="mt-16 bg-slate-800/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">

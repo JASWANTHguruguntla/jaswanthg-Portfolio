@@ -203,7 +203,7 @@ export const Contact = () => {
                 className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition-all duration-300"
               >
                 <Send className="mr-2" size={20} />
-                Send Message
+                Send via WhatsApp
               </Button>
             </form>
           </div>

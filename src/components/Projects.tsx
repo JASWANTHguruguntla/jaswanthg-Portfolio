@@ -1,8 +1,9 @@
 
 import { useState } from "react";
-import { Github, ExternalLink, Filter } from "lucide-react";
+import { Github, ExternalLink, Filter, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export const Projects = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
@@ -103,69 +104,74 @@ export const Projects = () => {
 
         <div 
           ref={projectsRef}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
+          className={`transition-all duration-1000 delay-300 ${
             projectsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          {filteredProjects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group"
-            >
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <div className="flex space-x-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-                    >
-                      <Github size={20} />
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-4">
+              {filteredProjects.map((project, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group h-full">
+                    <div className="p-6 h-full flex flex-col">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                        <div className="flex space-x-2">
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                          >
+                            <Github size={20} />
+                          </a>
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                          >
+                            <ExternalLink size={20} />
+                          </a>
+                        </div>
+                      </div>
+
+                      <p className="text-gray-300 mb-4 leading-relaxed flex-grow">
+                        {project.description}
+                      </p>
+
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-cyan-400 mb-2">Key Features:</h4>
+                        <ul className="text-sm text-gray-300 space-y-1">
+                          {project.features.map((feature, i) => (
+                            <li key={i} className="flex items-center">
+                              <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2"></span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.tech.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <p className="text-gray-300 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-cyan-400 mb-2">Key Features:</h4>
-                  <ul className="text-sm text-gray-300 space-y-1">
-                    {project.features.map((feature, i) => (
-                      <li key={i} className="flex items-center">
-                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+            <CarouselNext className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+          </Carousel>
         </div>
 
         <div className="text-center mt-12">
