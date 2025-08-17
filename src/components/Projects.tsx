@@ -171,12 +171,8 @@ export const Projects = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            {!isMobile && (
-              <>
-                <CarouselPrevious className="hidden sm:flex bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
-                <CarouselNext className="hidden sm:flex bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
-              </>
-            )}
+            <CarouselPrevious className="hidden sm:flex bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+            <CarouselNext className="hidden sm:flex bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
           </Carousel>
         </div>
 
