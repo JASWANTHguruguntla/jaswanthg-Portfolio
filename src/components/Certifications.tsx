@@ -173,8 +173,8 @@ export const Certifications = () => {
                     </Dialog>
                   </CarouselItem>)}
               </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-10 w-10 rounded-full shadow-lg" />
-              <CarouselNext className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-10 w-10 rounded-full shadow-lg" />
+            <CarouselPrevious className="hidden sm:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-10 w-10 rounded-full shadow-lg" />
+            <CarouselNext className="hidden sm:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-10 w-10 rounded-full shadow-lg" />
             </Carousel>
           </div>
         </div>
