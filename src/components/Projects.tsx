@@ -110,7 +110,7 @@ export const Projects = () => {
             projectsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="relative px-0 sm:px-12">
+          <div className="relative px-16 sm:px-20">
             <Carousel className="w-full max-w-full overflow-hidden">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {filteredProjects.map((project, index) => (
@@ -172,8 +172,8 @@ export const Projects = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-10 w-10 rounded-full shadow-lg" />
-              <CarouselNext className="hidden sm:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-10 w-10 rounded-full shadow-lg" />
+              <CarouselPrevious className="hidden sm:flex absolute -left-16 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg" />
+              <CarouselNext className="hidden sm:flex absolute -right-16 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg" />
             </Carousel>
           </div>
         </div>
