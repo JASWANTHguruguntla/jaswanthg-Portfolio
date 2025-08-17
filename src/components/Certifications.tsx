@@ -86,7 +86,8 @@ export const Certifications = () => {
           <div className="relative">
             <Carousel className="w-full max-w-full overflow-visible">
               <CarouselContent className="-ml-2 md:-ml-4">
-                {certifications.map((cert, index) => <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
+                {certifications.map((cert, index) => (
+                    <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
                     <Dialog>
                       <DialogTrigger asChild>
                         <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group hover:transform hover:scale-105 cursor-pointer h-full">
@@ -120,10 +121,10 @@ export const Certifications = () => {
                               </div>
                             </div>
 
-                            {cert.image && (
+                            {cert.imageUrl && (
                               <div className="mb-4 rounded-lg overflow-hidden bg-slate-600/30">
                                 <img 
-                                  src={cert.image} 
+                                  src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
                                 />
@@ -155,13 +156,6 @@ export const Certifications = () => {
                               )}
                             </div>
 
-                            {cert.credentialId && (
-                              <div className="mt-auto pt-2 border-t border-slate-600/50">
-                                <p className="text-xs text-gray-400">
-                                  Credential ID: <span className="text-cyan-400 font-medium">{cert.credentialId}</span>
-                                </p>
-                              </div>
-                            )}
                           </div>
                         </div>
                       </DialogTrigger>
@@ -181,10 +175,10 @@ export const Certifications = () => {
                         
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                           <div>
-                            {cert.image && (
+                            {cert.imageUrl && (
                               <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4">
                                 <img 
-                                  src={cert.image} 
+                                  src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-auto object-contain"
                                 />
@@ -216,14 +210,6 @@ export const Certifications = () => {
                           </div>
                           
                           <div className="space-y-4">
-                            {cert.credentialId && (
-                              <div className="bg-slate-700/50 rounded-lg p-4">
-                                <h4 className="text-lg font-semibold text-white mb-2">Verification</h4>
-                                <p className="text-gray-300">
-                                  Credential ID: <span className="text-cyan-400 font-medium">{cert.credentialId}</span>
-                                </p>
-                              </div>
-                            )}
                             
                             <div className="bg-slate-700/50 rounded-lg p-4">
                               <h4 className="text-lg font-semibold text-white mb-2">Certificate Details</h4>
