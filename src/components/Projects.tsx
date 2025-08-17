@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Github, ExternalLink, Filter, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export const Projects = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [projectsRef, projectsVisible] = useScrollAnimation();
   const [filter, setFilter] = useState("all");
+  const isMobile = useIsMobile();
 
   const projects = [
     {
@@ -108,14 +110,14 @@ export const Projects = () => {
             projectsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-4">
+          <Carousel className="w-full max-w-full overflow-hidden">
+            <CarouselContent className="-ml-2 md:-ml-4">
               {filteredProjects.map((project, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
                   <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group h-full">
-                    <div className="p-6 h-full flex flex-col">
+                    <div className="p-4 md:p-6 h-full flex flex-col">
                       <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
                           {project.title}
                         </h3>
                         <div className="flex space-x-2">
@@ -125,7 +127,7 @@ export const Projects = () => {
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
                           >
-                            <Github size={20} />
+                            <Github size={18} />
                           </a>
                           <a
                             href={project.demo}
@@ -133,18 +135,18 @@ export const Projects = () => {
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
                           >
-                            <ExternalLink size={20} />
+                            <ExternalLink size={18} />
                           </a>
                         </div>
                       </div>
 
-                      <p className="text-gray-300 mb-4 leading-relaxed flex-grow">
+                      <p className="text-gray-300 mb-4 leading-relaxed flex-grow text-sm md:text-base">
                         {project.description}
                       </p>
 
                       <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-cyan-400 mb-2">Key Features:</h4>
-                        <ul className="text-sm text-gray-300 space-y-1">
+                        <h4 className="text-xs md:text-sm font-semibold text-cyan-400 mb-2">Key Features:</h4>
+                        <ul className="text-xs md:text-sm text-gray-300 space-y-1">
                           {project.features.map((feature, i) => (
                             <li key={i} className="flex items-center">
                               <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2"></span>
@@ -158,7 +160,7 @@ export const Projects = () => {
                         {project.tech.map((tech, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
+                            className="px-2 md:px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
                           >
                             {tech}
                           </span>
@@ -169,8 +171,12 @@ export const Projects = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
-            <CarouselNext className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+            {!isMobile && (
+              <>
+                <CarouselPrevious className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+                <CarouselNext className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+              </>
+            )}
           </Carousel>
         </div>
 

@@ -2,13 +2,12 @@ import { Award, Calendar, ExternalLink, X, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Certifications = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [contentRef, contentVisible] = useScrollAnimation();
-  
-  // Check if device is mobile
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const isMobile = useIsMobile();
   
   const certifications = [
     {
@@ -106,44 +105,44 @@ export const Certifications = () => {
             contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-4">
+          <Carousel className="w-full max-w-full overflow-hidden">
+            <CarouselContent className="-ml-2 md:-ml-4">
               {certifications.map((cert, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
                   <Dialog>
                     <DialogTrigger asChild>
                       <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group hover:transform hover:scale-105 cursor-pointer h-full">
                         <div className={`h-2 bg-gradient-to-r ${cert.color}`}></div>
                         
-                        <div className="p-6 h-full flex flex-col">
+                        <div className="p-4 md:p-6 h-full flex flex-col">
                           <div className="flex items-start justify-between mb-4">
                             <div className="flex items-center space-x-3">
                               <div className={`p-2 rounded-full bg-gradient-to-r ${cert.color}`}>
-                                <Award className="w-6 h-6 text-white" />
+                                <Award className="w-5 h-5 md:w-6 md:h-6 text-white" />
                               </div>
                               <div>
-                                <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
                                   {cert.title}
                                 </h3>
-                                <p className="text-cyan-400 font-medium">{cert.issuer}</p>
+                                <p className="text-cyan-400 font-medium text-sm">{cert.issuer}</p>
                               </div>
                             </div>
-                            <ExternalLink className="w-5 h-5 text-gray-400 hover:text-cyan-400 transition-colors duration-200" />
+                            <ExternalLink className="w-4 h-4 md:w-5 md:h-5 text-gray-400 hover:text-cyan-400 transition-colors duration-200" />
                           </div>
 
                           <div className="flex items-center text-gray-300 mb-4">
                             <Calendar className="w-4 h-4 mr-2" />
-                            <span className="text-sm">{cert.date}</span>
+                            <span className="text-xs md:text-sm">{cert.date}</span>
                           </div>
 
-                          <p className="text-gray-300 mb-4 leading-relaxed text-sm flex-grow">
+                          <p className="text-gray-300 mb-4 leading-relaxed text-xs md:text-sm flex-grow line-clamp-3">
                             {cert.description}
                           </p>
 
                           <div className="space-y-2 mt-auto">
-                            <h4 className="text-sm font-semibold text-cyan-400">Skills Acquired:</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {cert.skills.map((skill, i) => (
+                            <h4 className="text-xs md:text-sm font-semibold text-cyan-400">Skills Acquired:</h4>
+                            <div className="flex flex-wrap gap-1 md:gap-2">
+                              {cert.skills.slice(0, 4).map((skill, i) => (
                                 <span
                                   key={i}
                                   className="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs"
@@ -151,6 +150,11 @@ export const Certifications = () => {
                                   {skill}
                                 </span>
                               ))}
+                              {cert.skills.length > 4 && (
+                                <span className="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs">
+                                  +{cert.skills.length - 4}
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -220,8 +224,12 @@ export const Certifications = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
-            <CarouselNext className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+            {!isMobile && (
+              <>
+                <CarouselPrevious className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+                <CarouselNext className="bg-slate-700/50 border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/20" />
+              </>
+            )}
           </Carousel>
         </div>
 
