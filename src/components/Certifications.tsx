@@ -83,8 +83,8 @@ export const Certifications = () => {
         </div>
 
         <div ref={contentRef} className={`transition-all duration-1000 delay-300 ${contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative px-16 sm:px-20">
-            <Carousel className="w-full max-w-full overflow-hidden">
+          <div className="relative">
+            <Carousel className="w-full max-w-full overflow-visible">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {certifications.map((cert, index) => <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
                     <Dialog>
@@ -99,82 +99,166 @@ export const Certifications = () => {
                                   <Award className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                 </div>
                                 <div>
-                                  <h3 className="text-base md:text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
+                                  <h3 className="font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 text-sm md:text-base">
                                     {cert.title}
                                   </h3>
-                                  <p className="text-cyan-400 font-medium text-sm">{cert.issuer}</p>
+                                  <p className="text-cyan-400 text-xs md:text-sm font-medium">{cert.issuer}</p>
                                 </div>
                               </div>
-                              <ExternalLink className="w-4 h-4 md:w-5 md:h-5 text-gray-400 hover:text-cyan-400 transition-colors duration-200" />
-                            </div>
-
-                            <div className="flex items-center text-gray-300 mb-4">
-                              <Calendar className="w-4 h-4 mr-2" />
-                              <span className="text-xs md:text-sm">{cert.date}</span>
-                            </div>
-
-                            <p className="text-gray-300 mb-4 leading-relaxed text-xs md:text-sm flex-grow line-clamp-3">
-                              {cert.description}
-                            </p>
-
-                            <div className="space-y-2 mt-auto">
-                              <h4 className="text-xs md:text-sm font-semibold text-cyan-400">Skills Acquired:</h4>
-                              <div className="flex flex-wrap gap-1 md:gap-2">
-                                {cert.skills.slice(0, 4).map((skill, i) => <span key={i} className="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs">
-                                    {skill}
-                                  </span>)}
-                                {cert.skills.length > 4 && <span className="px-2 py-1 bg-slate-700/50 text-gray-300 rounded text-xs">
-                                    +{cert.skills.length - 4}
-                                  </span>}
+                              <div className="flex space-x-2">
+                                {cert.pdfUrl && (
+                                  <a
+                                    href={cert.pdfUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                                    title="View Certificate PDF"
+                                  >
+                                    <ExternalLink size={16} />
+                                  </a>
+                                )}
                               </div>
                             </div>
+
+                            {cert.image && (
+                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-600/30">
+                                <img 
+                                  src={cert.image} 
+                                  alt={`${cert.title} certificate`}
+                                  className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                              </div>
+                            )}
+
+                            <div className="mb-3">
+                              <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
+                                {cert.description}
+                              </p>
+                            </div>
+
+                            <div className="mb-4">
+                              <p className="text-xs text-gray-400 mb-2">
+                                <Calendar size={12} className="inline mr-1" />
+                                {cert.date}
+                              </p>
+                              {cert.skills && cert.skills.length > 0 && (
+                                <div className="flex flex-wrap gap-1">
+                                  {cert.skills.map((skill, i) => (
+                                    <span 
+                                      key={i}
+                                      className="px-2 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+
+                            {cert.credentialId && (
+                              <div className="mt-auto pt-2 border-t border-slate-600/50">
+                                <p className="text-xs text-gray-400">
+                                  Credential ID: <span className="text-cyan-400 font-medium">{cert.credentialId}</span>
+                                </p>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </DialogTrigger>
-                
-                      <DialogContent className="max-w-4xl w-full h-[90vh] bg-slate-900 border-cyan-400/20 flex flex-col">
-                        <DialogHeader className="relative flex-shrink-0">
-                          <DialogTitle className="text-white text-xl pr-8">
-                            {cert.title} - {cert.issuer}
+                      
+                      <DialogContent className="bg-slate-800 border-cyan-400/20 max-w-4xl max-h-[90vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="text-white text-xl flex items-center gap-3">
+                            <div className={`p-2 rounded-full bg-gradient-to-r ${cert.color}`}>
+                              <Award className="w-6 h-6 text-white" />
+                            </div>
+                            {cert.title}
                           </DialogTitle>
-                          <DialogDescription className="text-gray-300">
-                            View the certificate image
+                          <DialogDescription className="text-cyan-400 font-medium">
+                            Issued by {cert.issuer} • {cert.date}
                           </DialogDescription>
-                          <DialogClose className="absolute right-0 top-0 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-                            <X className="h-6 w-6 text-white hover:text-cyan-400" />
-                            <span className="sr-only">Close</span>
-                          </DialogClose>
                         </DialogHeader>
                         
-                        <div className="flex-1 flex flex-col min-h-0 mt-4">
-                          <div className="flex-1 bg-slate-800/50 rounded-lg border border-cyan-400/20 overflow-hidden flex items-center justify-center p-4">
-                            <img src={cert.imageUrl} alt={`${cert.title} Certificate`} className="max-w-full max-h-full object-contain rounded-lg shadow-lg" onLoad={e => {
-                          console.log(`Certificate image loaded: ${cert.imageUrl}`);
-                        }} onError={e => {
-                          console.error(`Failed to load certificate image: ${cert.imageUrl}`);
-                        }} />
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                          <div>
+                            {cert.image && (
+                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4">
+                                <img 
+                                  src={cert.image} 
+                                  alt={`${cert.title} certificate`}
+                                  className="w-full h-auto object-contain"
+                                />
+                              </div>
+                            )}
+                            
+                            <div className="space-y-4">
+                              <div>
+                                <h4 className="text-lg font-semibold text-white mb-2">Description</h4>
+                                <p className="text-gray-300 leading-relaxed">{cert.description}</p>
+                              </div>
+                              
+                              {cert.skills && cert.skills.length > 0 && (
+                                <div>
+                                  <h4 className="text-lg font-semibold text-white mb-2">Skills Acquired</h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {cert.skills.map((skill, i) => (
+                                      <span 
+                                        key={i}
+                                        className="px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-sm font-medium"
+                                      >
+                                        {skill}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </div>
                           
-                          <div className="flex-shrink-0 mt-4 p-4 bg-slate-900/80 rounded-lg border border-cyan-400/20">
-                            {isMobile ? <a href={cert.pdfUrl} download className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-200 w-full justify-center" onClick={e => {
-                          console.log(`Downloading certificate: ${cert.pdfUrl}`);
-                        }}>
-                                <Download className="w-4 h-4" />
-                                Download Certificate
-                              </a> : <a href={cert.pdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-200 w-full justify-center" onClick={e => {
-                          console.log(`Attempting to open PDF: ${cert.pdfUrl}`);
-                        }}>
-                                <ExternalLink className="w-4 h-4" />
-                                Open PDF Certificate
-                              </a>}
+                          <div className="space-y-4">
+                            {cert.credentialId && (
+                              <div className="bg-slate-700/50 rounded-lg p-4">
+                                <h4 className="text-lg font-semibold text-white mb-2">Verification</h4>
+                                <p className="text-gray-300">
+                                  Credential ID: <span className="text-cyan-400 font-medium">{cert.credentialId}</span>
+                                </p>
+                              </div>
+                            )}
+                            
+                            <div className="bg-slate-700/50 rounded-lg p-4">
+                              <h4 className="text-lg font-semibold text-white mb-2">Certificate Details</h4>
+                              <div className="space-y-2 text-gray-300">
+                                <p><strong>Issuer:</strong> {cert.issuer}</p>
+                                <p><strong>Issue Date:</strong> {cert.date}</p>
+                                <p><strong>Type:</strong> Professional Certification</p>
+                              </div>
+                            </div>
                           </div>
+                        </div>
+                        
+                        <div className="flex justify-center mt-6">
+                          {cert.pdfUrl && (
+                            <a 
+                              href={cert.pdfUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300"
+                              onClick={() => {
+                                console.log(`Attempting to open PDF: ${cert.pdfUrl}`);
+                              }}
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              Open PDF Certificate
+                            </a>
+                          )}
                         </div>
                       </DialogContent>
                     </Dialog>
-                  </CarouselItem>)}
+                  </CarouselItem>
+                ))}
               </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex absolute -left-16 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg" />
-            <CarouselNext className="hidden sm:flex absolute -right-16 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg" />
+            <CarouselPrevious className="hidden sm:flex -left-12 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg z-10" />
+            <CarouselNext className="hidden sm:flex -right-12 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg z-10" />
             </Carousel>
           </div>
         </div>

@@ -110,8 +110,8 @@ export const Projects = () => {
             projectsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="relative px-16 sm:px-20">
-            <Carousel className="w-full max-w-full overflow-hidden">
+          <div className="relative">
+            <Carousel className="w-full max-w-full overflow-visible">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {filteredProjects.map((project, index) => (
                   <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
@@ -172,8 +172,8 @@ export const Projects = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex absolute -left-16 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg" />
-              <CarouselNext className="hidden sm:flex absolute -right-16 top-1/2 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg" />
+              <CarouselPrevious className="hidden sm:flex -left-12 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg z-10" />
+              <CarouselNext className="hidden sm:flex -right-12 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg z-10" />
             </Carousel>
           </div>
         </div>
