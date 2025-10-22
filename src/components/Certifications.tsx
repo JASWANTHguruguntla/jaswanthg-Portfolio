@@ -44,14 +44,14 @@ export const Certifications = () => {
     imageUrl: "/certificates/servicenow-csa.jpg",
     pdfUrl: "/certificates/servicenow-csa.pdf"
   }, {
-    title: "Certified Application Developer",
-    issuer: "Technical Institute",
-    date: "2024 - In Progress",
-    description: "Advanced application development certification focusing on modern programming practices and software architecture.",
-    skills: ["Application Development", "Software Architecture", "Programming", "System Design"],
+    title: "ServiceNow Certified Application Developer (CAD)",
+    issuer: "ServiceNow",
+    date: "October 19, 2025",
+    description: "Successfully completed certification requirements for Certified Application Developer, demonstrating expertise in ServiceNow application development and custom solutions.",
+    skills: ["Application Development", "ServiceNow Platform", "Scripting", "Custom Applications", "Software Architecture"],
     color: "from-orange-500 to-orange-600",
-    imageUrl: "/certificates/certified-app-developer.jpg",
-    pdfUrl: "/certificates/certified-app-developer.pdf"
+    imageUrl: "/certificates/servicenow-cad-image.jpeg",
+    pdfUrl: "/certificates/servicenow-cad.pdf"
   }, {
     title: "GenAI Powered Data Analytics Job Simulation",
     issuer: "TATA with Forage",
