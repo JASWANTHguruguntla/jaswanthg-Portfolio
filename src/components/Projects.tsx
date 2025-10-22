@@ -58,6 +58,15 @@ export const Projects = () => {
       demo: "https://jaswanthgfood.ccbp.tech/",
       features: ["Interactive menu", "Contact forms", "Mobile responsive", "Modern animations"]
     },
+    {
+      title: "Inventory Management System",
+      description: "Desktop application for efficient product inventory tracking and management with secure user authentication and real-time operations.",
+      tech: ["Java", "JavaFX", "MySQL", "Maven"],
+      category: "fullstack",
+      github: "https://github.com/JASWANTHguruguntla",
+      demo: "https://github.com/JASWANTHguruguntla",
+      features: ["Secure login system", "Real-time inventory dashboard", "Product CRUD operations", "Input validation and error handling"]
+    },
   ];
 
   const categories = [
