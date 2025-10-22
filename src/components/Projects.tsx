@@ -63,8 +63,8 @@ export const Projects = () => {
       description: "Desktop application for efficient product inventory tracking and management with secure user authentication and real-time operations.",
       tech: ["Java", "JavaFX", "MySQL", "Maven"],
       category: "fullstack",
-      github: "https://github.com/JASWANTHguruguntla",
-      demo: "https://github.com/JASWANTHguruguntla",
+      github: "https://github.com/JASWANTHguruguntla/InventoryManagementSystem",
+      demo: "https://github.com/JASWANTHguruguntla/InventoryManagementSystem",
       features: ["Secure login system", "Real-time inventory dashboard", "Product CRUD operations", "Input validation and error handling"]
     },
   ];
