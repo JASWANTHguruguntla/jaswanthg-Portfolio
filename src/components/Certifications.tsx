@@ -126,13 +126,15 @@ export const Certifications = () => {
                             </div>
 
                             {cert.imageUrl && (
-                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50 min-h-[128px] md:min-h-[160px] flex items-center justify-center">
+                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50" style={{ minHeight: '160px' }}>
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-auto max-h-40 object-contain hover:scale-105 transition-transform duration-300"
-                                  onLoad={() => {
-                                    console.log('Successfully loaded image:', cert.imageUrl);
+                                  className="w-full h-40 object-cover"
+                                  style={{ display: 'block', opacity: 1 }}
+                                  onLoad={(e) => {
+                                    console.log('✅ Successfully loaded image:', cert.imageUrl);
+                                    e.currentTarget.style.opacity = '1';
                                   }}
                                   onError={(e) => {
                                     console.error('❌ FAILED to load image:', cert.imageUrl);
