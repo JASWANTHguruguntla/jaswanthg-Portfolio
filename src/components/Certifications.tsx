@@ -5,29 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
 
-export const Certifications = () => {
-  const [titleRef, titleVisible] = useScrollAnimation();
-  const [contentRef, contentVisible] = useScrollAnimation();
-  const isMobile = useIsMobile();
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  // Preload all certificate images
-  useEffect(() => {
-    const imageUrls = certifications.map(cert => cert.imageUrl).filter(Boolean);
-    let loadedCount = 0;
-    
-    imageUrls.forEach(url => {
-      const img = new Image();
-      img.src = url;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === imageUrls.length) {
-          setImagesLoaded(true);
-        }
-      };
-    });
-  }, []);
-  const certifications = [{
+const certifications = [{
     title: "Artificial Intelligence Fundamentals",
     issuer: "IBM SkillsBuild",
     date: "April 4, 2025",
@@ -91,6 +69,12 @@ export const Certifications = () => {
     imageUrl: "/certificates/fullstack-bootcamp.jpg",
     pdfUrl: "/certificates/fullstack-bootcamp.pdf"
   }];
+
+export const Certifications = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [contentRef, contentVisible] = useScrollAnimation();
+  const isMobile = useIsMobile();
+
   return <section id="certifications" className="py-20 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'}`}>
