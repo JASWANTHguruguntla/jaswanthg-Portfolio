@@ -131,9 +131,13 @@ export const Certifications = () => {
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
+                                  onLoad={() => {
+                                    console.log('Successfully loaded image:', cert.imageUrl);
+                                  }}
                                   onError={(e) => {
-                                    console.error('Failed to load image:', cert.imageUrl);
-                                    e.currentTarget.src = '/placeholder.svg';
+                                    console.error('❌ FAILED to load image:', cert.imageUrl);
+                                    console.error('Image src attribute:', e.currentTarget.src);
+                                    console.error('Full error:', e);
                                   }}
                                 />
                               </div>
