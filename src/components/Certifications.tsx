@@ -3,10 +3,30 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useEffect, useState } from "react";
+
 export const Certifications = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [contentRef, contentVisible] = useScrollAnimation();
   const isMobile = useIsMobile();
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Preload all certificate images
+  useEffect(() => {
+    const imageUrls = certifications.map(cert => cert.imageUrl).filter(Boolean);
+    let loadedCount = 0;
+    
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === imageUrls.length) {
+          setImagesLoaded(true);
+        }
+      };
+    });
+  }, []);
   const certifications = [{
     title: "Artificial Intelligence Fundamentals",
     issuer: "IBM SkillsBuild",
