@@ -123,11 +123,13 @@ export const Projects = () => {
             <Carousel className="w-full max-w-full overflow-visible">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {filteredProjects.map((project, index) => (
-                  <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
-                    <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group h-full">
-                      <div className="p-4 md:p-6 h-full flex flex-col">
+                <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
+                    <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-500 overflow-hidden group h-full transform hover:-translate-y-2 hover:scale-[1.02]">
+                      <div className="p-4 md:p-6 h-full flex flex-col relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/5 group-hover:via-purple-400/5 group-hover:to-cyan-400/5 transition-all duration-500"></div>
+                        <div className="relative z-10">
                         <div className="flex justify-between items-start mb-4">
-                          <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                          <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-cyan-400 transition-all duration-500 group-hover:scale-105 transform-gpu">
                             {project.title}
                           </h3>
                           <div className="flex space-x-2">
@@ -135,7 +137,7 @@ export const Projects = () => {
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-125 transform-gpu hover:rotate-12"
                             >
                               <Github size={18} />
                             </a>
@@ -143,12 +145,13 @@ export const Projects = () => {
                               href={project.demo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-125 transform-gpu hover:-rotate-12"
                             >
                               <ExternalLink size={18} />
                             </a>
                           </div>
                         </div>
+
 
                         <p className="text-gray-300 mb-4 leading-relaxed flex-grow text-sm md:text-base">
                           {project.description}
@@ -170,12 +173,13 @@ export const Projects = () => {
                           {project.tech.map((tech, i) => (
                             <span
                               key={i}
-                              className="px-2 md:px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
+                              className="px-2 md:px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium group-hover:bg-cyan-400/20 group-hover:text-cyan-300 transition-all duration-300"
                             >
                               {tech}
                             </span>
                           ))}
                         </div>
+                      </div>
                       </div>
                     </div>
                   </CarouselItem>

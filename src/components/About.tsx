@@ -37,10 +37,10 @@ export const About = () => {
       icon: <Code className="w-6 h-6" />
     },
     {
-      year: "2024",
-      title: "ServiceNow CSA Certified",
+      year: "2025",
+      title: "ServiceNow CSA & CAD Certified",
       subtitle: "Smart Interz Partnership",
-      description: "Certified System Administrator with hands-on platform experience",
+      description: "Certified System Administrator and Application Developer with hands-on platform experience",
       icon: <Trophy className="w-6 h-6" />
     },
     {
