@@ -126,18 +126,17 @@ export const Certifications = () => {
                             </div>
 
                             {cert.imageUrl && (
-                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50" style={{ minHeight: '160px' }}>
+                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50">
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-40 object-cover"
-                                  style={{ display: 'block', opacity: 1 }}
-                                  onLoad={(e) => {
-                                    console.log('✅ Successfully loaded image:', cert.imageUrl);
-                                    e.currentTarget.style.opacity = '1';
-                                  }}
+                                  className="w-full object-cover"
+                                  width="400"
+                                  height="160"
+                                  loading="lazy"
                                   onError={(e) => {
                                     console.error('❌ FAILED to load image:', cert.imageUrl);
+                                    e.currentTarget.style.display = 'none';
                                   }}
                                 />
                               </div>
@@ -192,10 +191,13 @@ export const Certifications = () => {
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-auto object-contain"
-                                  style={{ display: 'block', maxHeight: '400px' }}
+                                  className="w-full object-contain mx-auto"
+                                  width="600"
+                                  height="400"
+                                  loading="lazy"
                                   onError={(e) => {
                                     console.error('Failed to load dialog image:', cert.imageUrl);
+                                    e.currentTarget.style.display = 'none';
                                   }}
                                 />
                               </div>
