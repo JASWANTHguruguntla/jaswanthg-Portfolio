@@ -12,7 +12,7 @@ const certifications = [{
     description: "Foundation course in AI concepts, machine learning algorithms, and practical AI implementation.",
     skills: ["Machine Learning", "AI Concepts", "Data Science", "Python for AI"],
     color: "from-cyan-500 to-cyan-600",
-    imageUrl: "/certificates/ai-fundamentals.jpg",
+    imageUrl: "/certificates/ai-fundamentals.jpeg",
     pdfUrl: "/certificates/ai-fundamentals.pdf"
   }, {
     title: "SQL (Basic)",
@@ -21,7 +21,7 @@ const certifications = [{
     description: "Certification demonstrating proficiency in basic SQL operations, queries, and database management.",
     skills: ["SQL Queries", "Database Management", "Data Filtering", "Table Operations"],
     color: "from-green-500 to-green-600",
-    imageUrl: "/certificates/sql-basic-hackerrank.jpg",
+    imageUrl: "/certificates/sql-basic-hackerrank.jpeg",
     pdfUrl: "/certificates/sql-basic-hackerrank.pdf"
   }, {
     title: "Full Stack Java Internship",
@@ -39,7 +39,7 @@ const certifications = [{
     description: "Comprehensive certification covering ServiceNow platform administration, user management, and system configuration.",
     skills: ["Platform Administration", "User Management", "System Configuration", "Workflow Management"],
     color: "from-blue-500 to-blue-600",
-    imageUrl: "/certificates/servicenow-csa.jpg",
+    imageUrl: "/certificates/servicenow-csa.jpeg",
     pdfUrl: "/certificates/servicenow-csa.pdf"
   }, {
     title: "ServiceNow Certified Application Developer (CAD)",
