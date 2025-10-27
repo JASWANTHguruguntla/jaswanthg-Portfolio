@@ -130,7 +130,7 @@ export const Certifications = () => {
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-40 object-cover block"
+                                  className="w-full h-40 object-cover block loaded"
                                 />
                               </div>
                             )}
@@ -184,7 +184,7 @@ export const Certifications = () => {
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-auto max-h-[500px] object-contain mx-auto block"
+                                  className="w-full h-auto max-h-[500px] object-contain mx-auto block loaded"
                                 />
                               </div>
                             )}
