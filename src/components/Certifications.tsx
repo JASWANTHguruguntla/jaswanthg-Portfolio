@@ -126,16 +126,11 @@ export const Certifications = () => {
                             </div>
 
                             {cert.imageUrl && (
-                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50 h-40">
+                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50">
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-full object-cover"
-                                  style={{ display: 'block' }}
-                                  onLoad={() => console.log('✅ Card image loaded:', cert.imageUrl)}
-                                  onError={(e) => {
-                                    console.error('❌ Card image failed:', cert.imageUrl);
-                                  }}
+                                  className="w-full h-40 object-cover block"
                                 />
                               </div>
                             )}
@@ -185,16 +180,11 @@ export const Certifications = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                           <div>
                             {cert.imageUrl && (
-                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4">
+                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4 p-4">
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-auto"
-                                  style={{ display: 'block', maxHeight: '500px', objectFit: 'contain' }}
-                                  onLoad={() => console.log('✅ Dialog image loaded:', cert.imageUrl)}
-                                  onError={(e) => {
-                                    console.error('❌ Dialog image failed:', cert.imageUrl);
-                                  }}
+                                  className="w-full h-auto max-h-[500px] object-contain mx-auto block"
                                 />
                               </div>
                             )}
