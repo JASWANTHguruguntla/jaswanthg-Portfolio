@@ -8,7 +8,6 @@ import { Contact } from "@/components/Contact";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { BackToTop } from "@/components/BackToTop";
 
 const Index = () => {
@@ -23,7 +22,7 @@ const Index = () => {
       <Certifications />
       <Contact />
       <Footer />
-      <ThemeToggle />
+      <ScrollProgress />
       <BackToTop />
     </div>
   );
