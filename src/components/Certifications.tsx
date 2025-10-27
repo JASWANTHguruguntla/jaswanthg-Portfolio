@@ -126,18 +126,16 @@ export const Certifications = () => {
                             </div>
 
                             {cert.imageUrl && (
-                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-600/30">
+                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50 min-h-[128px] md:min-h-[160px] flex items-center justify-center">
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
+                                  className="w-full h-auto max-h-40 object-contain hover:scale-105 transition-transform duration-300"
                                   onLoad={() => {
                                     console.log('Successfully loaded image:', cert.imageUrl);
                                   }}
                                   onError={(e) => {
                                     console.error('❌ FAILED to load image:', cert.imageUrl);
-                                    console.error('Image src attribute:', e.currentTarget.src);
-                                    console.error('Full error:', e);
                                   }}
                                 />
                               </div>
@@ -188,14 +186,13 @@ export const Certifications = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                           <div>
                             {cert.imageUrl && (
-                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4">
+                              <div className="rounded-lg overflow-hidden bg-slate-700/50 p-4 flex items-center justify-center min-h-[300px]">
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-auto object-contain"
+                                  className="w-full h-auto max-h-[500px] object-contain"
                                   onError={(e) => {
                                     console.error('Failed to load dialog image:', cert.imageUrl);
-                                    e.currentTarget.src = '/placeholder.svg';
                                   }}
                                 />
                               </div>
