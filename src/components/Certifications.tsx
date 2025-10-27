@@ -133,7 +133,7 @@ export const Certifications = () => {
                                   className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
                                   onError={(e) => {
                                     console.error('Failed to load image:', cert.imageUrl);
-                                    console.error('Image element:', e.currentTarget);
+                                    e.currentTarget.src = '/placeholder.svg';
                                   }}
                                 />
                               </div>
@@ -191,7 +191,7 @@ export const Certifications = () => {
                                   className="w-full h-auto object-contain"
                                   onError={(e) => {
                                     console.error('Failed to load dialog image:', cert.imageUrl);
-                                    console.error('Dialog image element:', e.currentTarget);
+                                    e.currentTarget.src = '/placeholder.svg';
                                   }}
                                 />
                               </div>
