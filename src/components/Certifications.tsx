@@ -130,13 +130,11 @@ export const Certifications = () => {
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full object-cover"
-                                  width="400"
-                                  height="160"
-                                  loading="lazy"
+                                  className="w-full h-40 object-cover"
+                                  onLoad={() => console.log('✅ Card image loaded:', cert.imageUrl)}
                                   onError={(e) => {
-                                    console.error('❌ FAILED to load image:', cert.imageUrl);
-                                    e.currentTarget.style.display = 'none';
+                                    console.error('❌ Card image failed:', cert.imageUrl);
+                                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="160"%3E%3Crect fill="%23334155" width="400" height="160"/%3E%3Ctext fill="%2394a3b8" x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle"%3ECertificate Image%3C/text%3E%3C/svg%3E';
                                   }}
                                 />
                               </div>
@@ -187,17 +185,15 @@ export const Certifications = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                           <div>
                             {cert.imageUrl && (
-                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4 p-2">
+                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4 p-2 min-h-[400px] flex items-center justify-center">
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
-                                  className="w-full object-contain mx-auto"
-                                  width="600"
-                                  height="400"
-                                  loading="lazy"
+                                  className="max-w-full max-h-[500px] object-contain"
+                                  onLoad={() => console.log('✅ Dialog image loaded:', cert.imageUrl)}
                                   onError={(e) => {
-                                    console.error('Failed to load dialog image:', cert.imageUrl);
-                                    e.currentTarget.style.display = 'none';
+                                    console.error('❌ Dialog image failed:', cert.imageUrl);
+                                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400"%3E%3Crect fill="%23334155" width="600" height="400"/%3E%3Ctext fill="%2394a3b8" x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle"%3ECertificate Image Not Available%3C/text%3E%3C/svg%3E';
                                   }}
                                 />
                               </div>
