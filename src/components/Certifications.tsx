@@ -127,6 +127,8 @@ export const Certifications = () => {
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
+                                  loading="lazy"
+                                  onLoad={(e) => e.currentTarget.classList.add('loaded')}
                                 />
                               </div>
                             )}
@@ -181,6 +183,8 @@ export const Certifications = () => {
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-auto object-contain"
+                                  loading="lazy"
+                                  onLoad={(e) => e.currentTarget.classList.add('loaded')}
                                 />
                               </div>
                             )}

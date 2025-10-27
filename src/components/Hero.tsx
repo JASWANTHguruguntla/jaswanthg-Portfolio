@@ -78,7 +78,9 @@ export const Hero = () => {
             <img
               src="/profilepicture.jpg"
               alt="Jaswanth Guruguntla"
-              className="w-32 h-32 rounded-full border-2 border-white/20 shadow-lg hover:scale-105 transition-transform duration-300 object-cover"
+              className="w-32 h-32 rounded-full border-2 border-white/20 shadow-lg hover:scale-105 transition-transform duration-300 object-cover glow-on-hover"
+              loading="lazy"
+              onLoad={(e) => e.currentTarget.classList.add('loaded')}
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 animate-fade-in">
@@ -100,14 +102,14 @@ export const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
           <Button 
             onClick={handleDownloadResume}
-            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 ripple-effect glow-on-hover"
           >
             <Download className="mr-2" size={20} />
             Download Resume
           </Button>
           <Button 
             variant="outline" 
-            className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
+            className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ripple-effect"
             onClick={() => window.location.href = 'mailto:jaswanthg.aits@gmail.com'}
           >
             <Mail className="mr-2" size={20} />
