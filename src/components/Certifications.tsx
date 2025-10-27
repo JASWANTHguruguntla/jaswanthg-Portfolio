@@ -188,11 +188,12 @@ export const Certifications = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                           <div>
                             {cert.imageUrl && (
-                              <div className="rounded-lg overflow-hidden bg-slate-700/50 p-4 flex items-center justify-center min-h-[300px]">
+                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4 p-2">
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-auto max-h-[500px] object-contain"
+                                  className="w-full h-auto object-contain"
+                                  style={{ display: 'block', maxHeight: '400px' }}
                                   onError={(e) => {
                                     console.error('Failed to load dialog image:', cert.imageUrl);
                                   }}
