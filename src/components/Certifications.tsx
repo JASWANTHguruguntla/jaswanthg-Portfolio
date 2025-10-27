@@ -125,13 +125,16 @@ export const Certifications = () => {
                               </div>
                             </div>
 
-                            {cert.imageUrl && (
+                             {cert.imageUrl && (
                               <div className="mb-4 rounded-lg overflow-hidden bg-slate-600/30">
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-32 md:h-40 object-cover hover:scale-105 transition-transform duration-300"
-                                  loading="eager"
+                                  onError={(e) => {
+                                    console.error('Failed to load image:', cert.imageUrl);
+                                    e.currentTarget.style.display = 'none';
+                                  }}
                                 />
                               </div>
                             )}
@@ -186,7 +189,9 @@ export const Certifications = () => {
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
                                   className="w-full h-auto object-contain"
-                                  loading="eager"
+                                  onError={(e) => {
+                                    console.error('Failed to load dialog image:', cert.imageUrl);
+                                  }}
                                 />
                               </div>
                             )}
