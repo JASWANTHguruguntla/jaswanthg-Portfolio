@@ -164,7 +164,7 @@ export const About = () => {
               {timeline.map((item, index) => (
                 <div key={index} className="relative flex items-start">
                   <div className="absolute left-6 w-4 h-4 bg-cyan-400 rounded-full border-4 border-slate-900"></div>
-                  <div className="ml-16 bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-colors duration-300">
+                  <div className="ml-16 bg-slate-700/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-colors duration-300 min-h-[180px] flex flex-col justify-between">
                     <div className="flex items-center mb-2">
                       <div className="text-cyan-400 mr-3">
                         {item.icon}
