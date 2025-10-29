@@ -5,6 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Skills = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
+  const [mobileCardsRef, mobileCardsVisible] = useScrollAnimation();
   const [cardsRef, cardsVisible] = useScrollAnimation();
   const [competenciesRef, competenciesVisible] = useScrollAnimation();
 
@@ -99,12 +100,15 @@ export const Skills = () => {
         </div>
 
         {/* Mobile: Vertical stack with smooth scroll */}
-        <div className="md:hidden space-y-4 mb-12">
+        <div 
+          ref={mobileCardsRef}
+          className="md:hidden space-y-4 mb-12"
+        >
           {Object.entries(skillCategories).map(([key, category], index) => (
             <div
               key={key}
               className={`bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm rounded-2xl p-6 border border-cyan-400/20 shadow-lg shadow-slate-900/50 active:scale-[0.98] transition-all duration-300 ${
-                cardsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-4'
+                mobileCardsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-4'
               }`}
               style={{ animationDelay: `${index * 80}ms` }}
             >
