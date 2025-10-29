@@ -54,26 +54,28 @@ export const Footer = () => {
             </div>
           </div>
           
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">About</a></li>
-              <li><a href="#skills" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Skills</a></li>
-              <li><a href="#projects" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Projects</a></li>
-              <li><a href="#certifications" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Certifications</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Contact</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Technologies</h4>
-            <ul className="space-y-2">
-              <li><span className="text-gray-400">Frontend Development</span></li>
-              <li><span className="text-gray-400">Backend Development</span></li>
-              <li><span className="text-gray-400">AI & Machine Learning</span></li>
-              <li><span className="text-gray-400">ServiceNow Platform</span></li>
-              <li><span className="text-gray-400">Database Management</span></li>
-            </ul>
+          <div className="grid grid-cols-2 md:grid-cols-1 col-span-1 md:col-span-1 gap-8 md:gap-0">
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><a href="#about" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">About</a></li>
+                <li><a href="#skills" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Skills</a></li>
+                <li><a href="#projects" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Projects</a></li>
+                <li><a href="#certifications" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Certifications</a></li>
+                <li><a href="#contact" className="text-gray-400 hover:text-cyan-400 transition-colors duration-200">Contact</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Technologies</h4>
+              <ul className="space-y-2">
+                <li><span className="text-gray-400">Frontend Development</span></li>
+                <li><span className="text-gray-400">Backend Development</span></li>
+                <li><span className="text-gray-400">AI & Machine Learning</span></li>
+                <li><span className="text-gray-400">ServiceNow Platform</span></li>
+                <li><span className="text-gray-400">Database Management</span></li>
+              </ul>
+            </div>
           </div>
         </div>
         
