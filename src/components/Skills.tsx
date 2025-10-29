@@ -98,10 +98,9 @@ export const Skills = () => {
           </p>
         </div>
 
-        {/* Desktop View */}
         <div 
           ref={cardsRef}
-          className={`hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16 transition-all duration-1000 delay-300 ${
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16 transition-all duration-1000 delay-300 ${
             cardsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -120,32 +119,6 @@ export const Skills = () => {
               <ul className="space-y-2">
                 {category.skills.map((skill, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-gray-300 text-sm">{skill}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Stacked Scroll View */}
-        <div className="md:hidden mb-16 relative h-[600px]">
-          {Object.entries(skillCategories).map(([key, category], index) => (
-            <div
-              key={key}
-              className="sticky top-20 bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 mb-4"
-              style={{ 
-                top: `${80 + index * 20}px`,
-              }}
-            >
-              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} mb-4`}>
-                {category.icon}
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
-              <ul className="space-y-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="flex items-start">
                     <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                     <span className="text-gray-300 text-sm">{skill}</span>
                   </li>
