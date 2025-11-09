@@ -6,6 +6,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
 
 const certifications = [{
+    title: "AlgoUniversity Technology Fellowship (ATF 2025)",
+    issuer: "AlgoUniversity",
+    date: "November 2025",
+    description: "Successfully qualified for Stage 1 of the AlgoUniversity Tech Fellowship (ATF) 2025, ranking in the top 8% nationwide out of 250,000 participants and advanced to Stage 2.",
+    skills: ["Competitive Programming", "Data Structures", "Algorithms", "Problem Solving", "Technical Excellence"],
+    color: "from-red-500 to-red-600",
+    imageUrl: "/certificates/algouniversity-tech-fellowship.jpg",
+    pdfUrl: "/certificates/algouniversity-tech-fellowship.jpg"
+  }, {
     title: "Artificial Intelligence Fundamentals",
     issuer: "IBM SkillsBuild",
     date: "April 4, 2025",
@@ -259,7 +268,7 @@ export const Certifications = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">7+</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">8+</div>
               <div className="text-gray-300">Certifications</div>
             </div>
             <div className="text-center">
