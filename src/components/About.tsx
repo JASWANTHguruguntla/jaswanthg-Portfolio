@@ -31,7 +31,7 @@ export const About = () => {
     },
     {
       year: "2023",
-      title: "CCBP 4.0 Intensive",
+      title: "CCBP 4.0",
       subtitle: "NxtWave - Full-Stack Development",
       description: "Mastered modern web technologies and full-stack development",
       icon: <Code className="w-6 h-6" />
