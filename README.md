@@ -1,73 +1,172 @@
-# Welcome to your Lovable project
+# Jaswanth G — Portfolio 🌐✨
 
-## Project info
+Hello! I'm Jaswanth G — a full‑stack developer and creative technologist who builds clean, scalable products and delightful user experiences. This portfolio highlights my signature projects, technical expertise, and ways to get in touch. Enjoy browsing! 👋
 
-**URL**: https://lovable.dev/projects/0211172b-eade-4997-b085-afdd26eb0cd6
+[Live Site 🌍](https://jaswanthg.github.io) · [Resume 📄](assets/JaswanthG_Resume.pdf) · GitHub: [@JASWANTHguruguntla](https://github.com/JASWANTHguruguntla)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## About Me 🧭
 
-**Use Lovable**
+I focus on building user-first applications across the web and ML/AI domains, with a love for clean UI, reliable backends, and reproducible experiments.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0211172b-eade-4997-b085-afdd26eb0cd6) and start prompting.
+- Role: Full-stack Developer • ML Enthusiast • Problem Solver 💻🧠  
+- Location: (City, Country) 📍  
+- Contact: your.email@example.com ✉️
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## Featured Projects 🚀
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Below are a few highlighted projects from this portfolio. Each entry contains a short overview, tech stack, key features, and links to code/demos.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 1) Inventory Management System 🧾📦
+A robust, user-friendly web application to manage products, stock levels, orders, and reporting for small-to-medium businesses.
 
-Follow these steps:
+- Type: Web application (Admin dashboard + REST API)  
+- Tech: React / TypeScript, Node.js / Express, PostgreSQL, Docker, GitHub Actions  
+- Key features:
+  - Product CRUD, categories, and supplier management
+  - Real-time stock alerts and low-stock notifications
+  - Role-based access control (admin, manager, staff)
+  - CSV import/export and inventory reporting dashboard
+- Live Demo: (If deployed, add the URL here — e.g., https://your-deploy.example.com)  
+- Code: https://github.com/JASWANTHguruguntla/inventory-management-system 🔗
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 2) YouTube Summarizer Pro 📝▶️
+A productivity tool that generates concise, timestamped summaries and highlight points from YouTube videos using NLP models.
 
-# Step 3: Install the necessary dependencies.
-npm i
+- Type: Web/CLI app + backend summarization service  
+- Tech: Python, FastAPI, Hugging Face Transformers, Celery/RQ, Redis, Docker  
+- Key features:
+  - Generate short and long-form summaries (multiple lengths)
+  - Timestamps mapping to key summary points
+  - Transcript fetching and cleanup pipeline
+  - Export summaries to Markdown, PDF, or shareable link
+- Live Demo: (If deployed, add the URL here — e.g., https://summarizer.example.com)  
+- Code: https://github.com/JASWANTHguruguntla/youtube-summarizer-pro 🔗
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+### 3) Caption Generator 📸🧠
+An image captioning library + demo application for generating human-readable captions using deep learning models.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Type: Model + CLI + Python API  
+- Tech: PyTorch, torchvision / Hugging Face, Flask or FastAPI demo, CUDA support  
+- Key features:
+  - Single-image and batch caption generation
+  - Beam search and length control options
+  - Evaluation tooling (BLEU / CIDEr placeholders)
+  - Easy-to-use Python API for integration
+- Demo: (demo URL or example GIF)  
+- Code: https://github.com/JASWANTHguruguntla/CaptionGenerator 🔗
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Tech Stack & Tools 🛠️
 
-## What technologies are used for this project?
+I work across the stack and pick tools that match the problem:
 
-This project is built with:
+- Frontend: React, Next.js, TypeScript, Tailwind CSS  
+- Backend: Node.js, Express, FastAPI, Python  
+- Databases: PostgreSQL, MongoDB, Redis  
+- ML / AI: PyTorch, Hugging Face Transformers, NumPy, pandas  
+- DevOps: Docker, GitHub Actions, Vercel / Netlify, CI/CD  
+- Productivity: Git, VS Code, Postman, TensorBoard
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## Screenshots & Media 🎞️
 
-Simply open [Lovable](https://lovable.dev/projects/0211172b-eade-4997-b085-afdd26eb0cd6) and click on Share -> Publish.
+Include screenshots or short GIFs saved under `assets/` or `public/`. Example below — replace with your actual images:
 
-## Can I connect a custom domain to my Lovable project?
+![Portfolio Hero Screenshot](assets/portfolio-hero.png)
+![Inventory Dashboard](assets/inventory-dashboard.png)
+![YouTube Summarizer Demo](assets/ytsummarizer-demo.gif)
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Run the Portfolio Locally 🧰
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This repo contains a static site / React app. Example steps (update commands for your stack):
+
+1. Clone the repo
+   ```bash
+   git clone https://github.com/JASWANTHguruguntla/jaswanthg-Portfolio.git
+   cd jaswanthg-Portfolio
+   ```
+
+2. Install dependencies and start dev server (Node example)
+   ```bash
+   npm install
+   npm run dev
+   # or
+   yarn
+   yarn dev
+   ```
+
+3. Build for production
+   ```bash
+   npm run build
+   # or
+   yarn build
+   ```
+
+For project-specific instructions (Inventory Management, YouTube Summarizer Pro, Caption Generator), see each project's README in their respective repositories.
+
+---
+
+## Adding New Projects 🔧
+
+To add a project to this portfolio:
+1. Add a new project entry in the site content (often a JSON/YAML file or Markdown in `content/projects/`).  
+2. Add images to `assets/` and reference them in the project entry.  
+3. Update links to live demos and repositories.  
+4. Commit and open a PR for review.
+
+---
+
+## Accessibility & Performance ♿⚡
+
+I aim to follow accessibility best practices and performance optimizations:
+- Semantic HTML, proper alt text, keyboard navigation
+- Image optimization (WebP), lazy-loading
+- Lighthouse checks and progressive enhancement
+
+---
+
+## Contributing 🤝
+
+This portfolio is primarily personal, but feedback and small improvements are welcome:
+
+- Open an issue describing the suggestion or bug  
+- Fork and create a branch for major changes  
+- Add clear commit messages and include screenshots for UI changes  
+- Create a PR and reference the issue
+
+---
+
+## Resume & Contact 📬
+
+- Resume: assets/JaswanthG_Resume.pdf  
+- Email: your.email@example.com  
+- LinkedIn: https://www.linkedin.com/in/yourprofile  
+- Twitter: https://twitter.com/yourhandle
+
+---
+
+## License 📜
+
+This portfolio and its content are available under the MIT License. See LICENSE for details.
+
+---
+
+## Acknowledgements 🙏
+
+Thanks to the many OSS projects and creators that make modern web and ML development possible — React, Next.js, PyTorch, Hugging Face, Vite, Tailwind, and more.
+
+---
+
+Made with ❤️ by Jaswanth G — let's build something great! 🚀
