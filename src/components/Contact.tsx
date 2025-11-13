@@ -64,7 +64,7 @@ export const Contact = () => {
             contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="space-y-8">
+          <div>
             <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">
               <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
               <p className="text-gray-300 leading-relaxed mb-6">
@@ -105,47 +105,6 @@ export const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">
-              <h3 className="text-xl font-bold text-white mb-4">Social Links</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a
-                  href="https://github.com/JASWANTHguruguntla"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
-                >
-                  <Github className="w-6 h-6 text-cyan-400" />
-                  <span className="text-gray-300">GitHub</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/jaswanthguruguntla/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
-                >
-                  <Linkedin className="w-6 h-6 text-cyan-400" />
-                  <span className="text-gray-300">LinkedIn</span>
-                </a>
-                <a
-                  href="https://www.instagram.com/jaswanth_guruguntla/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
-                >
-                  <Instagram className="w-6 h-6 text-cyan-400" />
-                  <span className="text-gray-300">Instagram</span>
-                </a>
-                <a
-                  href="https://leetcode.com/u/jaswanth_guruguntla/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-3 bg-slate-600/50 rounded-lg hover:bg-slate-600 transition-colors duration-200"
-                >
-                  <Code2 className="w-6 h-6 text-cyan-400" />
-                  <span className="text-gray-300">LeetCode</span>
-                </a>
-              </div>
-            </div>
           </div>
 
           <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">

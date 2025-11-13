@@ -8,50 +8,10 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-2">
             <h3 className="text-2xl font-bold text-white mb-4">Jaswanth Guruguntla</h3>
-            <p className="text-gray-300 mb-4 max-w-md">
+            <p className="text-gray-300 max-w-md">
               Aspiring AI Generalist and Full-Stack Developer passionate about creating innovative solutions 
               that bridge traditional software development with cutting-edge AI technologies.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/JASWANTHguruguntla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-              >
-                <Github size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jaswanthguruguntla/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-              >
-                <Linkedin size={24} />
-              </a>
-              <a
-                href="https://www.instagram.com/jaswanth_guruguntla/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-              >
-                <Instagram size={24} />
-              </a>
-              <a
-                href="https://leetcode.com/u/jaswanth_guruguntla/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-              >
-                <Code2 size={24} />
-              </a>
-              <a
-                href="mailto:jaswanthg.aits@gmail.com"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-              >
-                <Mail size={24} />
-              </a>
-            </div>
           </div>
           
           <div>
