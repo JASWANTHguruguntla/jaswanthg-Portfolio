@@ -77,6 +77,7 @@ export const Projects = () => {
   ];
 
   const filteredProjects = filter === "all" ? projects : projects.filter(p => p.category === filter);
+  const [isFilterChanging, setIsFilterChanging] = useState(false);
 
   return (
     <section id="projects" className="py-20 bg-slate-800/50">
@@ -96,14 +97,21 @@ export const Projects = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
+          {categories.map((category, idx) => (
             <button
               key={category.id}
-              onClick={() => setFilter(category.id)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
+              onClick={() => {
+                setIsFilterChanging(true);
+                setFilter(category.id);
+                setTimeout(() => setIsFilterChanging(false), 50);
+              }}
+              style={{
+                animationDelay: `${idx * 100}ms`
+              }}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 animate-fade-in hover:scale-110 active:scale-95 ${
                 filter === category.id
-                  ? "bg-cyan-500 text-white shadow-lg transform scale-105"
-                  : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50 hover:text-cyan-400"
+                  ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/50 scale-105"
+                  : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50 hover:text-cyan-400 hover:shadow-md"
               }`}
             >
               <Filter className="w-4 h-4" />
@@ -123,7 +131,15 @@ export const Projects = () => {
             <Carousel className="w-full max-w-full overflow-visible">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {filteredProjects.map((project, index) => (
-                <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
+                <CarouselItem 
+                  key={`${filter}-${index}`} 
+                  className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'} transition-all duration-500 ${
+                    isFilterChanging ? 'opacity-0 scale-95' : 'opacity-100 scale-100 animate-fade-in'
+                  }`}
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
+                >
                     <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-500 overflow-hidden group h-full transform hover:-translate-y-2 hover:scale-[1.02]">
                       <div className="p-4 md:p-6 h-full flex flex-col relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/5 group-hover:via-purple-400/5 group-hover:to-cyan-400/5 transition-all duration-500"></div>
