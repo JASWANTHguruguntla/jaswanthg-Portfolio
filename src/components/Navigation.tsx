@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +34,8 @@ export const Navigation = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-baseline space-x-8">
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -47,12 +46,10 @@ export const Navigation = () => {
                 </a>
               ))}
             </div>
-            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-3">
-            <ThemeToggle />
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-cyan-400 focus:outline-none"
