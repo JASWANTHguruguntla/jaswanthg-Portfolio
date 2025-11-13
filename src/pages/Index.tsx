@@ -12,7 +12,7 @@ import { BackToTop } from "@/components/BackToTop";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 light:from-slate-50 light:via-purple-50 light:to-slate-50 transition-colors duration-500">
       <ScrollProgress />
       <Navigation />
       <Hero />
