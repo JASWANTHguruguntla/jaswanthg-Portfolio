@@ -11,6 +11,7 @@ import {
 export const Skills = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [cardsRef, cardsVisible] = useScrollAnimation();
+  const [mobileRef, mobileVisible] = useScrollAnimation();
   const [competenciesRef, competenciesVisible] = useScrollAnimation();
 
   const skillCategories = {
@@ -105,9 +106,9 @@ export const Skills = () => {
 
         {/* Mobile Accordion View */}
         <div 
-          ref={cardsRef}
+          ref={mobileRef}
           className={`md:hidden space-y-4 mb-8 transition-all duration-1000 delay-300 ${
-            cardsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
+            mobileVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
           <Accordion type="single" collapsible defaultValue="frontend" className="space-y-4">
