@@ -262,25 +262,6 @@ export const Certifications = () => {
           </div>
         </div>
 
-        <div className="mt-16 bg-slate-800/50 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">
-          <h3 className="text-2xl font-bold text-white mb-6 text-center">
-            Current Learning Path
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">8+</div>
-              <div className="text-gray-300">Certifications</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">100+</div>
-              <div className="text-gray-300">Hours of Training</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">2026</div>
-              <div className="text-gray-300">Target Graduation</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>;
 };
