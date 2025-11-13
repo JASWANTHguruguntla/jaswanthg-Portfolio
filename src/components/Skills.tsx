@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { Code, Database, Wrench, Cloud, Brain, Shield } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Skills = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [cardsRef, cardsVisible] = useScrollAnimation();
   const [competenciesRef, competenciesVisible] = useScrollAnimation();
+  const isMobile = useIsMobile();
 
   const skillCategories = {
     frontend: {
@@ -100,32 +102,65 @@ export const Skills = () => {
 
         <div 
           ref={cardsRef}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16 transition-all duration-1000 delay-300 ${
+          className={`transition-all duration-1000 delay-300 ${
             cardsVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
-          {Object.entries(skillCategories).map(([key, category], index) => (
-            <div
-              key={key}
-              className={`bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105 ${
-                cardsVisible ? 'animate-fade-in' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 100 + 600}ms` }}
-            >
-              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} mb-4`}>
-                {category.icon}
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
-              <ul className="space-y-2">
-                {category.skills.map((skill, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-gray-300 text-sm">{skill}</span>
-                  </li>
-                ))}
-              </ul>
+          {isMobile ? (
+            /* Mobile: Vertical Stack-Scroll Layout */
+            <div className="flex flex-col space-y-4 mb-16 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-cyan-500 scrollbar-track-slate-700/50">
+              {Object.entries(skillCategories).map(([key, category], index) => (
+                <div
+                  key={key}
+                  className={`bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-cyan-400/20 shadow-lg hover:shadow-cyan-400/20 hover:border-cyan-400/40 transition-all duration-500 hover:scale-[1.02] ${
+                    cardsVisible ? 'animate-fade-in' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${index * 100 + 600}ms` }}
+                >
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${category.color} shadow-md`}>
+                      {category.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {category.skills.map((skill, idx) => (
+                      <li key={idx} className="flex items-start group">
+                        <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0 group-hover:scale-150 transition-transform duration-300"></span>
+                        <span className="text-gray-300 text-base group-hover:text-cyan-400 transition-colors duration-300">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            /* Desktop/Tablet: Grid Layout */
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
+              {Object.entries(skillCategories).map(([key, category], index) => (
+                <div
+                  key={key}
+                  className={`bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105 ${
+                    cardsVisible ? 'animate-fade-in' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${index * 100 + 600}ms` }}
+                >
+                  <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} mb-4`}>
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
+                  <ul className="space-y-2">
+                    {category.skills.map((skill, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        <span className="text-gray-300 text-sm">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div 
