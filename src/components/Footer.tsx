@@ -38,6 +38,54 @@ export const Footer = () => {
         </div>
         
         <div className="border-t border-slate-800 mt-8 pt-8">
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center gap-6">
+              <a 
+                href="https://github.com/yourusername" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                aria-label="GitHub"
+              >
+                <Github size={24} />
+              </a>
+              <a 
+                href="https://linkedin.com/in/yourusername" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={24} />
+              </a>
+              <a 
+                href="https://instagram.com/yourusername" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram size={24} />
+              </a>
+              <a 
+                href="https://github.com/yourusername" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                aria-label="Code Portfolio"
+              >
+                <Code2 size={24} />
+              </a>
+              <a 
+                href="mailto:your.email@example.com"
+                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                aria-label="Email"
+              >
+                <Mail size={24} />
+              </a>
+            </div>
+          </div>
+          
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               © 2024 Jaswanth Guruguntla. All rights reserved.

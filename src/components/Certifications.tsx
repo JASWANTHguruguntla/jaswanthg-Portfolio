@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
 
 const certifications = [{
     title: "AlgoUniversity Technology Fellowship (ATF 2025)",
@@ -83,6 +84,12 @@ export const Certifications = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
   const [contentRef, contentVisible] = useScrollAnimation();
   const isMobile = useIsMobile();
+  
+  const autoplayPlugin = Autoplay({
+    delay: 3000,
+    stopOnInteraction: true,
+    stopOnMouseEnter: true,
+  });
 
   return <section id="certifications" className="py-20 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,7 +104,14 @@ export const Certifications = () => {
 
         <div ref={contentRef} className={`transition-all duration-1000 delay-300 ${contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'}`}>
           <div className="relative">
-            <Carousel className="w-full max-w-full overflow-visible">
+            <Carousel 
+              className="w-full max-w-full overflow-visible"
+              plugins={[autoplayPlugin]}
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+            >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {certifications.map((cert, index) => (
                     <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
