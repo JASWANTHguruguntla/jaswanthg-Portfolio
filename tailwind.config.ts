@@ -29,7 +29,7 @@ export default {
     				'monospace'
     			],
     			sans: [
-    				'Source Sans Pro',
+    				'Poppins',
     				'ui-sans-serif',
     				'system-ui',
     				'-apple-system',
@@ -42,7 +42,7 @@ export default {
     				'sans-serif'
     			],
     			serif: [
-    				'Source Serif Pro',
+    				'Merriweather',
     				'ui-serif',
     				'Georgia',
     				'Cambria',
@@ -51,7 +51,7 @@ export default {
     				'serif'
     			],
     			mono: [
-    				'Source Code Pro',
+    				'JetBrains Mono',
     				'ui-monospace',
     				'SFMono-Regular',
     				'Menlo',
