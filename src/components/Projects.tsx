@@ -201,6 +201,8 @@ export const Projects = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              <CarouselPrevious className="hidden lg:flex -left-14 bg-slate-800/90 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
+              <CarouselNext className="hidden lg:flex -right-14 bg-slate-800/90 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
             </Carousel>
           </div>
         </div>
