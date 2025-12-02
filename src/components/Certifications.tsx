@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 
 const certifications = [{
@@ -86,8 +85,8 @@ export const Certifications = () => {
   const isMobile = useIsMobile();
   
   const autoplayPlugin = Autoplay({
-    delay: 3000,
-    stopOnInteraction: true,
+    delay: 2000,
+    stopOnInteraction: false,
     stopOnMouseEnter: true,
   });
 
@@ -106,7 +105,7 @@ export const Certifications = () => {
           <div className="relative">
             <Carousel 
               className="w-full max-w-full overflow-visible"
-              plugins={[autoplayPlugin]}
+              plugins={[autoplayPlugin] as any}
               opts={{
                 align: "start",
                 loop: true,
