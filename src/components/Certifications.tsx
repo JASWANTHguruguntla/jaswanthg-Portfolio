@@ -1,5 +1,5 @@
-import { Award, Calendar, ExternalLink, X, Download } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogClose } from "@/components/ui/dialog";
+import { Award, Calendar, ExternalLink } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -11,7 +11,7 @@ const certifications = [{
     date: "November 2025",
     description: "Successfully qualified for Stage 1 of the AlgoUniversity Tech Fellowship (ATF) 2025, ranking in the top 8% nationwide out of 250,000 participants and advanced to Stage 2.",
     skills: ["Competitive Programming", "Data Structures", "Algorithms", "Problem Solving", "Technical Excellence"],
-    color: "from-red-500 to-red-600",
+    gradient: "from-red-500 to-orange-500",
     imageUrl: "/certificates/algouniversity-tech-fellowship.jpg",
     pdfUrl: "/certificates/algouniversity-tech-fellowship.jpg"
   }, {
@@ -20,7 +20,7 @@ const certifications = [{
     date: "April 4, 2025",
     description: "Foundation course in AI concepts, machine learning algorithms, and practical AI implementation.",
     skills: ["Machine Learning", "AI Concepts", "Data Science", "Python for AI"],
-    color: "from-cyan-500 to-cyan-600",
+    gradient: "from-cyan-500 to-blue-500",
     imageUrl: "/certificates/ai-fundamentals.jpeg",
     pdfUrl: "/certificates/ai-fundamentals.pdf"
   }, {
@@ -29,7 +29,7 @@ const certifications = [{
     date: "June 12, 2025",
     description: "Certification demonstrating proficiency in basic SQL operations, queries, and database management.",
     skills: ["SQL Queries", "Database Management", "Data Filtering", "Table Operations"],
-    color: "from-green-500 to-green-600",
+    gradient: "from-green-500 to-emerald-500",
     imageUrl: "/certificates/sql-basic-hackerrank.jpeg",
     pdfUrl: "/certificates/sql-basic-hackerrank.pdf"
   }, {
@@ -38,7 +38,7 @@ const certifications = [{
     date: "May 5 - June 20, 2025",
     description: "Successfully completed a comprehensive internship program in Full Stack Java development, covering both frontend and backend technologies.",
     skills: ["Java", "Spring Boot", "React", "MySQL", "REST APIs", "Full Stack Development"],
-    color: "from-purple-500 to-purple-600",
+    gradient: "from-purple-500 to-pink-500",
     imageUrl: "/certificates/skilldzire-fullstack-java.jpg",
     pdfUrl: "/certificates/skilldzire-fullstack-java.pdf"
   }, {
@@ -47,7 +47,7 @@ const certifications = [{
     date: "July 14, 2025",
     description: "Comprehensive certification covering ServiceNow platform administration, user management, and system configuration.",
     skills: ["Platform Administration", "User Management", "System Configuration", "Workflow Management"],
-    color: "from-blue-500 to-blue-600",
+    gradient: "from-blue-500 to-indigo-500",
     imageUrl: "/certificates/servicenow-csa.jpeg",
     pdfUrl: "/certificates/servicenow-csa.pdf"
   }, {
@@ -56,7 +56,7 @@ const certifications = [{
     date: "October 19, 2025",
     description: "Successfully completed certification requirements for Certified Application Developer, demonstrating expertise in ServiceNow application development and custom solutions.",
     skills: ["Application Development", "ServiceNow Platform", "Scripting", "Custom Applications", "Software Architecture"],
-    color: "from-orange-500 to-orange-600",
+    gradient: "from-orange-500 to-amber-500",
     imageUrl: "/certificates/servicenow-cad-image.jpeg",
     pdfUrl: "/certificates/servicenow-cad.pdf"
   }, {
@@ -65,7 +65,7 @@ const certifications = [{
     date: "July 28th, 2025",
     description: "Completed practical tasks in exploratory data analysis, risk profiling, predicting delinquency with AI, business reporting, and implementing AI-driven collections strategy.",
     skills: ["Generative AI", "Data Analytics", "Machine Learning", "Risk Profiling", "Business Intelligence", "Python", "AI Strategy"],
-    color: "from-indigo-500 to-indigo-600",
+    gradient: "from-indigo-500 to-violet-500",
     imageUrl: "/certificates/genai-data-analytics.jpg",
     pdfUrl: "/certificates/genai-data-analytics.pdf"
   }, {
@@ -74,7 +74,7 @@ const certifications = [{
     date: "2025",
     description: "Successfully completed a comprehensive 6-week course on Full Stack Developer Bootcamp covering modern frontend and backend technologies.",
     skills: ["React", "Node.js", "JavaScript", "HTML/CSS", "Full Stack Development", "RESTful APIs", "Database Management"],
-    color: "from-emerald-500 to-emerald-600",
+    gradient: "from-emerald-500 to-teal-500",
     imageUrl: "/certificates/fullstack-bootcamp.jpg",
     pdfUrl: "/certificates/fullstack-bootcamp.pdf"
   }];
@@ -90,13 +90,26 @@ export const Certifications = () => {
     stopOnMouseEnter: true,
   });
 
-  return <section id="certifications" className="py-20 bg-slate-900/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <section id="certifications" className="relative py-24 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[#0a0a0f]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-500/5 via-transparent to-cyan-500/5"></div>
+        <div className="absolute top-0 left-1/3 w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-purple-500/8 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-0 right-1/3 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cyan-500/8 rounded-full blur-[100px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] md:bg-[size:64px_64px]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+            <span className="text-sm text-gray-400">Achievements</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Certifications & <span className="text-cyan-400">Achievements</span>
+            Certifications & <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Achievements</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
             Continuous learning and professional development through industry-recognized certifications
           </p>
         </div>
@@ -106,90 +119,76 @@ export const Certifications = () => {
             <Carousel 
               className="w-full max-w-full overflow-visible"
               plugins={[autoplayPlugin] as any}
-              opts={{
-                align: "start",
-                loop: true,
-              }}
+              opts={{ align: "start", loop: true }}
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {certifications.map((cert, index) => (
-                    <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
+                  <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'}`}>
                     <Dialog>
                       <DialogTrigger asChild>
-                        <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden group hover:transform hover:scale-105 cursor-pointer h-full">
-                          <div className={`h-2 bg-gradient-to-r ${cert.color}`}></div>
+                        <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-400/30 transition-all duration-500 overflow-hidden group cursor-pointer h-full hover:-translate-y-2">
+                          <div className={`h-1.5 bg-gradient-to-r ${cert.gradient}`}></div>
                           
-                          <div className="p-4 md:p-6 h-full flex flex-col">
+                          <div className="p-5 h-full flex flex-col">
                             <div className="flex items-start justify-between mb-4">
                               <div className="flex items-center space-x-3">
-                                <div className={`p-2 rounded-full bg-gradient-to-r ${cert.color}`}>
-                                  <Award className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                                <div className={`p-2.5 rounded-xl bg-gradient-to-r ${cert.gradient} shadow-lg`}>
+                                  <Award className="w-5 h-5 text-white" />
                                 </div>
-                                <div>
-                                  <h3 className="font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 text-sm md:text-base">
+                                <div className="flex-1">
+                                  <h3 className="font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 text-sm leading-tight">
                                     {cert.title}
                                   </h3>
-                                  <p className="text-cyan-400 text-xs md:text-sm font-medium">{cert.issuer}</p>
+                                  <p className="text-cyan-400 text-xs font-medium mt-1">{cert.issuer}</p>
                                 </div>
-                              </div>
-                              <div className="flex space-x-2">
-                                {cert.pdfUrl && (
-                                  <a
-                                    href={cert.pdfUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-                                    title="View Certificate PDF"
-                                  >
-                                    <ExternalLink size={16} />
-                                  </a>
-                                )}
                               </div>
                             </div>
 
                             {cert.imageUrl && (
-                              <div className="mb-4 rounded-lg overflow-hidden bg-slate-700/50">
+                              <div className="mb-4 rounded-xl overflow-hidden bg-white/5">
                                 <img 
                                   src={cert.imageUrl} 
                                   alt={`${cert.title} certificate`}
-                                  className="w-full h-40 object-cover block loaded"
+                                  className="w-full h-36 object-cover block loaded"
                                 />
                               </div>
                             )}
 
-                            <div className="mb-3">
-                              <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
-                                {cert.description}
-                              </p>
-                            </div>
+                            <p className="text-gray-400 text-xs leading-relaxed mb-3 line-clamp-2">
+                              {cert.description}
+                            </p>
 
-                            <div className="mb-4">
-                              <p className="text-xs text-gray-400 mb-2">
-                                <Calendar size={12} className="inline mr-1" />
+                            <div className="mt-auto">
+                              <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                                <Calendar size={12} />
                                 {cert.date}
                               </p>
                               {cert.skills && cert.skills.length > 0 && (
                                 <div className="flex flex-wrap gap-1">
-                                  {cert.skills.map((skill, i) => (
+                                  {cert.skills.slice(0, 3).map((skill, i) => (
                                     <span 
                                       key={i}
-                                      className="px-2 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium"
+                                      className="px-2 py-0.5 bg-white/5 text-cyan-400 rounded-full text-[10px] border border-cyan-400/20"
                                     >
                                       {skill}
                                     </span>
                                   ))}
+                                  {cert.skills.length > 3 && (
+                                    <span className="px-2 py-0.5 bg-white/5 text-gray-400 rounded-full text-[10px]">
+                                      +{cert.skills.length - 3}
+                                    </span>
+                                  )}
                                 </div>
                               )}
                             </div>
-
                           </div>
                         </div>
                       </DialogTrigger>
                       
-                      <DialogContent className="bg-slate-800 border-cyan-400/20 max-w-4xl max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="bg-[#0a0a0f] border-white/10 max-w-4xl max-h-[90vh] overflow-y-auto backdrop-blur-xl">
                         <DialogHeader>
                           <DialogTitle className="text-white text-xl flex items-center gap-3">
-                            <div className={`p-2 rounded-full bg-gradient-to-r ${cert.color}`}>
+                            <div className={`p-2 rounded-xl bg-gradient-to-r ${cert.gradient}`}>
                               <Award className="w-6 h-6 text-white" />
                             </div>
                             {cert.title}
@@ -202,7 +201,7 @@ export const Certifications = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                           <div>
                             {cert.imageUrl && (
-                              <div className="rounded-lg overflow-hidden bg-slate-700/50 mb-4 p-4">
+                              <div className="rounded-xl overflow-hidden bg-white/5 mb-4 p-4">
                                 <img 
                                   src={cert.imageUrl}
                                   alt={`${cert.title} certificate`}
@@ -210,39 +209,36 @@ export const Certifications = () => {
                                 />
                               </div>
                             )}
-                            
-                            <div className="space-y-4">
-                              <div>
-                                <h4 className="text-lg font-semibold text-white mb-2">Description</h4>
-                                <p className="text-gray-300 leading-relaxed">{cert.description}</p>
-                              </div>
-                              
-                              {cert.skills && cert.skills.length > 0 && (
-                                <div>
-                                  <h4 className="text-lg font-semibold text-white mb-2">Skills Acquired</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                    {cert.skills.map((skill, i) => (
-                                      <span 
-                                        key={i}
-                                        className="px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-sm font-medium"
-                                      >
-                                        {skill}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
                           </div>
                           
                           <div className="space-y-4">
+                            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                              <h4 className="text-lg font-semibold text-white mb-2">Description</h4>
+                              <p className="text-gray-400 leading-relaxed">{cert.description}</p>
+                            </div>
                             
-                            <div className="bg-slate-700/50 rounded-lg p-4">
+                            {cert.skills && cert.skills.length > 0 && (
+                              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                                <h4 className="text-lg font-semibold text-white mb-3">Skills Acquired</h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {cert.skills.map((skill, i) => (
+                                    <span 
+                                      key={i}
+                                      className="px-3 py-1 bg-white/5 text-cyan-400 rounded-full text-sm border border-cyan-400/20"
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                            
+                            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                               <h4 className="text-lg font-semibold text-white mb-2">Certificate Details</h4>
-                              <div className="space-y-2 text-gray-300">
-                                <p><strong>Issuer:</strong> {cert.issuer}</p>
-                                <p><strong>Issue Date:</strong> {cert.date}</p>
-                                <p><strong>Type:</strong> Professional Certification</p>
+                              <div className="space-y-2 text-gray-400 text-sm">
+                                <p><strong className="text-white">Issuer:</strong> {cert.issuer}</p>
+                                <p><strong className="text-white">Issue Date:</strong> {cert.date}</p>
+                                <p><strong className="text-white">Type:</strong> Professional Certification</p>
                               </div>
                             </div>
                           </div>
@@ -254,13 +250,10 @@ export const Certifications = () => {
                               href={cert.pdfUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center space-x-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300"
-                              onClick={() => {
-                                console.log(`Attempting to open PDF: ${cert.pdfUrl}`);
-                              }}
+                              className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg shadow-cyan-500/25"
                             >
                               <ExternalLink className="w-4 h-4" />
-                              Open PDF Certificate
+                              <span>Open PDF Certificate</span>
                             </a>
                           )}
                         </div>
@@ -269,12 +262,12 @@ export const Certifications = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-            <CarouselPrevious className="hidden lg:flex -left-12 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg z-10" />
-            <CarouselNext className="hidden lg:flex -right-12 bg-slate-700/80 hover:bg-slate-600/80 border-cyan-400/20 text-cyan-400 hover:text-white h-12 w-12 rounded-full shadow-lg z-10" />
+              <CarouselPrevious className="hidden lg:flex -left-14 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-gray-400 hover:text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
+              <CarouselNext className="hidden lg:flex -right-14 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-gray-400 hover:text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
             </Carousel>
           </div>
         </div>
-
       </div>
-    </section>;
+    </section>
+  );
 };

@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { Github, ExternalLink, Filter, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, ExternalLink, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -80,23 +79,35 @@ export const Projects = () => {
   const [isFilterChanging, setIsFilterChanging] = useState(false);
 
   return (
-    <section id="projects" className="py-20 bg-slate-800/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="relative py-24 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[#0a0a0f]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 via-transparent to-purple-500/5"></div>
+        <div className="absolute top-1/3 left-1/4 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-500/8 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cyan-500/8 rounded-full blur-[100px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] md:bg-[size:64px_64px]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={titleRef}
           className={`text-center mb-16 transition-all duration-1000 ${
             titleVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
           }`}
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+            <span className="text-sm text-gray-400">Portfolio</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured <span className="text-cyan-400">Projects</span>
+            Featured <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
             A showcase of my technical skills and problem-solving capabilities through real-world applications
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category, idx) => (
             <button
               key={category.id}
@@ -105,18 +116,18 @@ export const Projects = () => {
                 setFilter(category.id);
                 setTimeout(() => setIsFilterChanging(false), 50);
               }}
-              style={{
-                animationDelay: `${idx * 100}ms`
-              }}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 animate-fade-in hover:scale-110 active:scale-95 ${
+              style={{ animationDelay: `${idx * 100}ms` }}
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-full transition-all duration-300 animate-fade-in text-sm ${
                 filter === category.id
-                  ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/50 scale-105"
-                  : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50 hover:text-cyan-400 hover:shadow-md"
+                  ? "bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/25"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10"
               }`}
             >
-              <Filter className="w-4 h-4" />
+              <Filter className="w-3.5 h-3.5" />
               <span className="font-medium">{category.name}</span>
-              <span className="bg-slate-800/50 px-2 py-1 rounded-full text-xs">{category.count}</span>
+              <span className={`px-2 py-0.5 rounded-full text-xs ${
+                filter === category.id ? "bg-white/20" : "bg-white/5"
+              }`}>{category.count}</span>
             </button>
           ))}
         </div>
@@ -136,16 +147,14 @@ export const Projects = () => {
                   className={`pl-2 md:pl-4 ${isMobile ? 'basis-4/5' : 'md:basis-1/2 lg:basis-1/3'} transition-all duration-500 ${
                     isFilterChanging ? 'opacity-0 scale-95' : 'opacity-100 scale-100 animate-fade-in'
                   }`}
-                  style={{
-                    animationDelay: `${index * 100}ms`
-                  }}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                    <div className="bg-slate-700/50 backdrop-blur-sm rounded-lg border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-500 overflow-hidden group h-full transform hover:-translate-y-2 hover:scale-[1.02]">
-                      <div className="p-4 md:p-6 h-full flex flex-col relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/5 group-hover:via-purple-400/5 group-hover:to-cyan-400/5 transition-all duration-500"></div>
+                    <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-400/30 transition-all duration-500 overflow-hidden group h-full hover:-translate-y-2">
+                      <div className="p-6 h-full flex flex-col relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 to-purple-400/0 group-hover:from-cyan-400/5 group-hover:to-purple-400/5 transition-all duration-500"></div>
                         <div className="relative z-10">
                         <div className="flex justify-between items-start mb-4">
-                          <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-cyan-400 transition-all duration-500 group-hover:scale-105 transform-gpu">
+                          <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-all duration-300">
                             {project.title}
                           </h3>
                           <div className="flex space-x-2">
@@ -153,32 +162,31 @@ export const Projects = () => {
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-125 transform-gpu hover:rotate-12"
+                              className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-cyan-400 hover:bg-white/10 transition-all duration-300"
                             >
-                              <Github size={18} />
+                              <Github size={16} />
                             </a>
                             <a
                               href={project.demo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-125 transform-gpu hover:-rotate-12"
+                              className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-cyan-400 hover:bg-white/10 transition-all duration-300"
                             >
-                              <ExternalLink size={18} />
+                              <ExternalLink size={16} />
                             </a>
                           </div>
                         </div>
 
-
-                        <p className="text-gray-300 mb-4 leading-relaxed flex-grow text-sm md:text-base">
+                        <p className="text-gray-400 mb-4 leading-relaxed flex-grow text-sm">
                           {project.description}
                         </p>
 
                         <div className="mb-4">
-                          <h4 className="text-xs md:text-sm font-semibold text-cyan-400 mb-2">Key Features:</h4>
-                          <ul className="text-xs md:text-sm text-gray-300 space-y-1">
+                          <h4 className="text-xs font-semibold text-cyan-400 mb-2">Key Features:</h4>
+                          <ul className="text-xs text-gray-400 space-y-1">
                             {project.features.map((feature, i) => (
                               <li key={i} className="flex items-center">
-                                <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2"></span>
+                                <span className="w-1 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mr-2"></span>
                                 {feature}
                               </li>
                             ))}
@@ -189,7 +197,7 @@ export const Projects = () => {
                           {project.tech.map((tech, i) => (
                             <span
                               key={i}
-                              className="px-2 md:px-3 py-1 bg-slate-600/50 text-cyan-400 rounded-full text-xs font-medium group-hover:bg-cyan-400/20 group-hover:text-cyan-300 transition-all duration-300"
+                              className="px-2.5 py-1 bg-white/5 text-cyan-400 rounded-full text-xs border border-cyan-400/20 group-hover:border-cyan-400/40 transition-all duration-300"
                             >
                               {tech}
                             </span>
@@ -201,18 +209,18 @@ export const Projects = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden lg:flex -left-14 bg-slate-800/90 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
-              <CarouselNext className="hidden lg:flex -right-14 bg-slate-800/90 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
+              <CarouselPrevious className="hidden lg:flex -left-14 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-gray-400 hover:text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
+              <CarouselNext className="hidden lg:flex -right-14 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-gray-400 hover:text-cyan-400 h-10 w-10 rounded-full backdrop-blur-sm transition-all duration-300" />
             </Carousel>
           </div>
         </div>
 
         <div className="text-center mt-12">
           <Button 
-            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
+            className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
             onClick={() => window.open("https://github.com/JASWANTHguruguntla", "_blank")}
           >
-            <Github className="mr-2" size={20} />
+            <Github className="mr-2" size={18} />
             View All Projects on GitHub
           </Button>
         </div>
