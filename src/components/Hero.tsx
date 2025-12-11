@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Download, Mail, Github, Linkedin, ChevronDown, Instagram, Code2 } from "lucide-react";
+import { Download, Mail, Github, Linkedin, ChevronDown, Instagram, Code2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -35,10 +35,9 @@ export const Hero = () => {
   }, [currentIndex]);
 
   const handleDownloadResume = () => {
-    // Create a temporary link element to trigger download
     const link = document.createElement('a');
-    link.href = '/resume.pdf'; // This assumes you have a resume.pdf file in the public folder
-    link.download = 'Jaswanth_Guruguntla_Resume.pdf'; // Name for the downloaded file
+    link.href = '/resume.pdf';
+    link.download = 'Jaswanth_Guruguntla_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -46,114 +45,126 @@ export const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)]"></div>
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
+      {/* Modern gradient background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[#0a0a0f]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-purple-500/5"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px]"></div>
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       </div>
 
       <div 
         ref={heroRef}
-        className={`relative z-10 text-center max-w-4xl mx-auto px-4 transition-all duration-1000 ${
+        className={`relative z-10 w-full max-w-5xl mx-auto px-6 transition-all duration-1000 ${
           heroVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'
         }`}
       >
-        <div className="mb-8">
-          <div className="mb-6 flex justify-center animate-fade-in">
-            <img
-              src="/profilepicture.jpg"
-              alt="Jaswanth Guruguntla"
-              className="w-32 h-32 rounded-full border-2 border-white/20 shadow-lg hover:scale-105 transition-transform duration-300 object-cover glow-on-hover"
-              loading="lazy"
-              onLoad={(e) => e.currentTarget.classList.add('loaded')}
-            />
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
+          <div className="text-left space-y-8">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-sm text-gray-400">Available for opportunities</span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                Hi, I'm{" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                  Jaswanth
+                </span>
+              </h1>
+              
+              <div className="h-8 flex items-center">
+                <span className="text-lg sm:text-xl text-gray-400 font-light">
+                  {displayText}
+                  <span className="text-cyan-400 animate-pulse">|</span>
+                </span>
+              </div>
+            </div>
+
+            <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl">
+              B.Tech CSE (AI) Final Year Student with <span className="text-white font-medium">CGPA: 8.81</span>. 
+              ServiceNow CSA & CAD Certified. Passionate about building scalable solutions and exploring AI frontiers.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                onClick={handleDownloadResume}
+                className="group bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-white/20 text-white hover:bg-white/10 px-6 py-3 rounded-xl font-medium transition-all duration-300 backdrop-blur-sm"
+                onClick={() => window.location.href = 'mailto:jaswanthg.aits@gmail.com'}
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Get in Touch
+              </Button>
+            </div>
+
+            <div className="flex items-center gap-4 pt-4">
+              <span className="text-sm text-gray-500">Find me on</span>
+              <div className="flex gap-3">
+                {[
+                  { href: "https://github.com/JASWANTHguruguntla", icon: Github },
+                  { href: "https://www.linkedin.com/in/jaswanthguruguntla/", icon: Linkedin },
+                  { href: "https://www.instagram.com/jaswanth_guruguntla/", icon: Instagram },
+                  { href: "https://leetcode.com/u/jaswanth_guruguntla/", icon: Code2 },
+                ].map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-400/10 transition-all duration-300"
+                  >
+                    <social.icon size={18} />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 animate-fade-in">
-            Jaswanth <span className="text-cyan-400">Guruguntla</span>
-          </h1>
-          <div className="h-12 flex items-center justify-center">
-            <h2 className="text-xl md:text-2xl text-gray-300 font-mono">
-              {displayText}
-              <span className="animate-pulse text-cyan-400">|</span>
-            </h2>
+
+          {/* Right content - Profile */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-3xl blur-2xl opacity-20 scale-110"></div>
+              
+              {/* Profile card */}
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-2 shadow-2xl">
+                <img
+                  src="/profilepicture.jpg"
+                  alt="Jaswanth Guruguntla"
+                  className="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Floating badge */}
+                <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-lg">
+                  CGPA: 8.81
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -top-6 -left-6 w-12 h-12 border border-cyan-400/30 rounded-xl rotate-12"></div>
+              <div className="absolute -bottom-8 left-8 w-8 h-8 bg-purple-500/20 rounded-lg rotate-45"></div>
+            </div>
           </div>
         </div>
 
-        <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in">
-          B.Tech CSE (AI) Final Year Student | CGPA: 8.81 | ServiceNow CSA & CAD Certified | 
-          Passionate about building scalable solutions and exploring AI frontiers
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
-          <Button 
-            onClick={handleDownloadResume}
-            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 ripple-effect glow-on-hover"
-          >
-            <Download className="mr-2" size={20} />
-            Download Resume
-          </Button>
-          <Button 
-            variant="outline" 
-            className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ripple-effect"
-            onClick={() => window.location.href = 'mailto:jaswanthg.aits@gmail.com'}
-          >
-            <Mail className="mr-2" size={20} />
-            Get in Touch
-          </Button>
-        </div>
-
-        <div className="flex justify-center space-x-6 mb-16 animate-fade-in">
-          <a
-            href="https://github.com/JASWANTHguruguntla"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-          >
-            <Github size={32} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/jaswanthguruguntla/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-          >
-            <Linkedin size={32} />
-          </a>
-          <a
-            href="https://www.instagram.com/jaswanth_guruguntla/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-          >
-            <Instagram size={32} />
-          </a>
-          <a
-            href="https://leetcode.com/u/jaswanth_guruguntla/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-          >
-            <Code2 size={32} />
-          </a>
-        </div>
-
-        <div className="animate-bounce">
-          <ChevronDown className="mx-auto text-cyan-400" size={32} />
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-xs text-gray-500 uppercase tracking-widest">Scroll</span>
+          <ChevronDown className="text-gray-500" size={20} />
         </div>
       </div>
     </section>
